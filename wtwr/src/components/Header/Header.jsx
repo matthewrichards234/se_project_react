@@ -4,6 +4,8 @@ import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 
 const Header = () => {
+  const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
   return (
     <div className="header">
       {/* Logo - Date -- space between -- Add clothes - Name - PFP */}
@@ -11,7 +13,10 @@ const Header = () => {
       <img src={Logo} alt="WTWR Logo" className="header__logo" />
 
       {/* Date & Location (I could make this seperate p tags between date & location) */}
-      <p className="header__date-location">June 15, New York</p>
+      <p className="header__date-location">
+        {/* Fix to match Figma */}
+        {date.toLocaleString("en-GB", { timeZone: "UTC" })}
+      </p>
 
       {/* Add clothes Button */}
       {/* Note: the + symbol was not an icon I could download as SVG. */}

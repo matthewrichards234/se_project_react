@@ -1,0 +1,14 @@
+.weather-card {
+  max-width: 1360px;
+  margin: 0 56px;
+}
+
+.weather-card__container {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.weather-card__temperature {
+  /* color: white; */
+}
