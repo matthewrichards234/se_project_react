@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/Fonts/CabinetGrotesk-Regular.otf");
+}
+
+.header {
+  /* Make the entire header a flex container. */
+  display: flex;
+  flex-direction: row;
+  font-family: "Cabinet Grotesk";
+  margin: 32px 40px 28px;
+}
+
+.header__logo {
+}
