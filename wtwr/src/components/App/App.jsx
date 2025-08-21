@@ -13,11 +13,7 @@ const App = ({ name, link }) => {
     <div className="page">
       <Header />
       <WeatherCard />
-      <div className="item-cards">
-        {defaultClothingItems.map((item) => {
-          return <ItemCard key={item._id} name={item.name} link={item.link} />;
-        })}
-      </div>
+      <ItemCards />
       <Footer />
     </div>
   );

@@ -1,0 +1,6 @@
+.item-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 323px);
+  grid-template-rows: repeat(auto-fill, 326px);
+  gap: 21px;
+}
