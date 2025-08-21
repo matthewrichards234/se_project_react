@@ -1,15 +1,67 @@
 @font-face {
   font-family: "Cabinet Grotesk";
-  src: url("../../assets/Fonts/CabinetGrotesk-Regular.otf");
+  src: url("../../assets/Fonts/CabinetGrotesk-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk Bold";
+  src: url("../../assets/Fonts/CabinetGrotesk-Bold.otf") format("opentype");
+}
+
+/* Font Styles for both Header & Buttons */
+.header .header__add-clothes {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
 }
 
 .header {
-  /* Make the entire header a flex container. */
+  /* Make entire header a Flex Continer */
   display: flex;
   flex-direction: row;
-  font-family: "Cabinet Grotesk";
-  margin: 32px 40px 28px;
+  margin: 32px 40px 28px 40px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  max-width: 1320px;
+
+  /* For visualization: not part of project. */
+  border: 1px solid black;
 }
 
 .header__logo {
+  width: 89px;
+  height: 40px;
+  margin-right: 24px;
+  margin-bottom: 5px;
+}
+
+/* I had to eyeball this positioning so confirm the right metrics later! */
+.header__date-location {
+  /* Push rest of flex items to farthest most to the right */
+
+  margin: auto auto auto 0;
+  padding: 11px auto 5px;
+}
+
+.header__add-clothes {
+  border: none;
+  background-color: transparent;
+  margin-right: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__user-name {
+  margin: auto 12px auto 0;
+}
+
+.header__user-pfp {
+  width: 40px;
+  height: 40px;
+  margin: auto 0 auto 0;
 }
