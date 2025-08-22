@@ -9,11 +9,18 @@ const ItemCards = () => {
       <ul className="item-card__grid">
         {
           <div className="item-cards">
-            {defaultClothingItems.map((item) => {
-              return (
-                <ItemCard key={item._id} name={item.name} link={item.link} />
-              );
-            })}
+            {defaultClothingItems
+              .filter((item) => item.weather.toLowerCase() === "warm")
+              .map((item) => {
+                return (
+                  <ItemCard
+                    key={item._id}
+                    name={item.name}
+                    link={item.link}
+                    weather={item.weather}
+                  />
+                );
+              })}
           </div>
         }
       </ul>
