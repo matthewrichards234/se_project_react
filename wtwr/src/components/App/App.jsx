@@ -4,7 +4,8 @@ import Header from "../Header/Header";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
 import Footer from "../Footer/Footer";
-import ItemCard from "../ItemCard/ItemCard";
+// import ItemCard from "../ItemCard/ItemCard";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 // The curly brackets contain the props for the App component.
 const App = ({ name, link }) => {
@@ -15,6 +16,7 @@ const App = ({ name, link }) => {
       <WeatherCard />
       <ItemCards />
       <Footer />
+      <ModalWithForm /> {/* Adding for Styling */}
     </div>
   );
 };
