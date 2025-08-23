@@ -6,23 +6,20 @@ import "./ItemCards.css";
 const ItemCards = () => {
   return (
     <div>
-      <ul className="item-card__grid">
-        {
-          <div className="item-cards">
-            {defaultClothingItems
-              .filter((item) => item.weather.toLowerCase() === "warm")
-              .map((item) => {
-                return (
-                  <ItemCard
-                    key={item._id}
-                    name={item.name}
-                    link={item.link}
-                    weather={item.weather}
-                  />
-                );
-              })}
-          </div>
-        }
+      <ul className="item-cards">
+        {defaultClothingItems
+          .filter((item) => item.weather.toLowerCase() === "warm")
+          .map((item) => {
+            return (
+              <li key={item._id} className="item-cards__content">
+                <ItemCard
+                  name={item.name}
+                  link={item.link}
+                  weather={item.weather}
+                />
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

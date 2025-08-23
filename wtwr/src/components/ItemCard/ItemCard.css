@@ -1,4 +1,15 @@
 .item-card {
   width: 323px;
   height: 326px;
+  display: flex;
+  position: relative;
+}
+
+.item-card__img {
+  border-radius: 12px;
+}
+
+.item-card__name {
+  position: absolute;
+  left: 50%;
 }

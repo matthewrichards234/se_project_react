@@ -16,8 +16,8 @@ const App = ({ name, link }) => {
       <Header />
       <WeatherCard />
       <ItemCards />
-      <Footer />
-      <ModalWithForm /> {/* Adding for Styling */}
+      {/* <Footer />
+      <ModalWithForm /> */}
     </div>
   );
 };
