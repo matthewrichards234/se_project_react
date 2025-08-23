@@ -1,14 +1,33 @@
 .weather-card {
   max-width: 1360px;
-  margin: 0 56px;
+  padding: 0 40px;
+  position: relative;
 }
 
 .weather-card__container {
-  width: 100%;
+  max-width: 100%;
+  height: 80px;
   border-radius: 12px;
-  border: 1px solid black;
+
+  /* For static website only bg-img & color */
+  background-image: url(../../assets/Images/static-weather-sample.svg);
+  background-color: #00a3ff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .weather-card__temperature {
-  /* color: white; */
+  color: white;
+  margin: 0 56px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 55px;
+}
+
+.weather-card__notification {
+  font-size: 20px;
+  margin: 40px 0 34px 0;
 }

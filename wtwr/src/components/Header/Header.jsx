@@ -4,7 +4,11 @@ import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 
 const Header = () => {
-  const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+  const date = new Date();
+  const options = {
+    month: "long",
+    day: "numeric",
+  };
 
   return (
     <div className="header">
@@ -15,7 +19,8 @@ const Header = () => {
       {/* Date & Location (I could make this seperate p tags between date & location) */}
       <p className="header__date-location">
         {/* Fix to match Figma */}
-        {date.toLocaleString("en-GB", { timeZone: "UTC" })}
+        {date.toLocaleString("en-GB", options)}
+        {", New York"}
       </p>
 
       {/* Add clothes Button */}

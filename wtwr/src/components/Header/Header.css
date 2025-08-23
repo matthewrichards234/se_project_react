@@ -8,20 +8,17 @@
 }
 
 .header {
-  /* Make entire header a Flex Continer */
   display: flex;
   flex-direction: row;
-  align-items: center; /* vertically center */
-  margin: 32px 40px 28px 40px;
+  align-items: center;
+  margin: 32px 0 28px 0;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0px;
   max-width: 1360px;
-
-  /* For visualization: not part of project. */
-  border: 1px solid black;
+  padding: 0 40px;
 }
 
 .header__logo {

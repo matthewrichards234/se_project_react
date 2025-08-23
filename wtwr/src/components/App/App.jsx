@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { defaultClothingItems } from "../../utils/clothingItems";
+import "./App.css";
 import Header from "../Header/Header";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
