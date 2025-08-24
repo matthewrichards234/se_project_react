@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const ModalWithForm = () => {
+const ModalWithForm = ({ isOpen, onClose }) => {
+  // Close modal when Escape key is pressed
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  if (!isOpen) return null;
   return (
     <div className="modalWithForm">
       <div className="modalWithForm__container">

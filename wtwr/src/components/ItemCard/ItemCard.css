@@ -11,5 +11,9 @@
 
 .item-card__name {
   position: absolute;
-  left: 50%;
+  left: 38%;
+  padding: 2px 12px;
+  background-color: white;
+  border-radius: 4px;
+  margin-top: 15px;
 }
