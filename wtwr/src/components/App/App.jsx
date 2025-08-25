@@ -10,16 +10,16 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const App = ({ name, link }) => {
   const [state, setState] = useState(defaultClothingItems);
-  // Modal state toggle & function.
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState("");
 
-  function handleOpenModal() {
-    setIsOpen(true);
+  function handleOpenClothingModal() {
+    setActiveModal("add-clothes");
   }
 
-  function handleCloseModal() {
-    setIsOpen(false);
+  function handleOpenPreviewModal() {
+    setActiveModal("preview");
   }
+
   return (
     <div className="page">
       <Header />
