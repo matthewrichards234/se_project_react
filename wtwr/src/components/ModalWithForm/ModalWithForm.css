@@ -1,0 +1,75 @@
+/* Modal Base */
+.modalWithForm {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+}
+
+.modalWithForm_is-open {
+  visibility: visible;
+}
+
+.modalWithForm__container {
+  border: solid 1px black;
+  padding: 28px 28px 36px 28px;
+  max-width: 469px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.modalWithForm__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalWithForm__label,
+.modalWithForm__title,
+.modalWithForm__radio {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.modalWithForm__title {
+  margin-bottom: 24px;
+}
+
+.modalWithForm__label {
+  margin-bottom: 8px;
+}
+
+.modalWithForm__input {
+  margin: 0 0 24px 0;
+  padding: 0 0 4px 0;
+  width: 440px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: 500;
+}
+
+.modalWithForm__label-radio {
+  display: flex;
+  align-items: center;
+}
+
+.modalWithForm__radio {
+  margin: 0 8px 0 0;
+}
+
+.modalWithForm__close-btn {
+  background-image: url("../../assets/Images/close-btn.svg");
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+}

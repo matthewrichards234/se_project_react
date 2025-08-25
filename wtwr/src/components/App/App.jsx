@@ -8,9 +8,18 @@ import Footer from "../Footer/Footer";
 // import ItemCard from "../ItemCard/ItemCard";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-// The curly brackets contain the props for the App component.
 const App = ({ name, link }) => {
   const [state, setState] = useState(defaultClothingItems);
+  // Modal state toggle & function.
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleOpenModal() {
+    setIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsOpen(false);
+  }
   return (
     <div className="page">
       <Header />
