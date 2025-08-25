@@ -11,8 +11,6 @@ const Header = ({ handleOpenModal, handleCloseModal }) => {
     day: "numeric",
   };
 
-  const [activeModal, setActiveModal] = useState("");
-
   return (
     <div className="header">
       <img src={Logo} alt="WTWR Logo" className="header__logo" />
@@ -23,9 +21,9 @@ const Header = ({ handleOpenModal, handleCloseModal }) => {
       <button
         className="header__add-clothes"
         type="button"
-        // Click handler to trigger open modal
+        onClick={handleOpenModal}
       >
-        <ModalWithForm isOpen={activeModal === "add-clothes"} />+ Add clothes
+        + Add clothes
       </button>
       <p className="header__user-name">Terrence Tegegne</p>
       <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
