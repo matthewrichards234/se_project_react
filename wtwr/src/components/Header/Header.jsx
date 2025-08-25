@@ -11,7 +11,7 @@ const Header = ({ handleOpenModal, handleCloseModal }) => {
     day: "numeric",
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState("");
 
   return (
     <div className="header">

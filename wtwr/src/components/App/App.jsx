@@ -10,7 +10,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const App = ({ name, link }) => {
   const [state, setState] = useState(defaultClothingItems);
-  const [activeModal, setActiveModal] = useState("");
+  // const [activeModal, setActiveModal] = useState("");
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
