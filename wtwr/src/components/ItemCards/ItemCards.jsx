@@ -11,15 +11,13 @@ const ItemCards = ({ handleOpenModal }) => {
           .filter((item) => item.weather.toLowerCase() === "warm")
           .map((item) => {
             return (
-              <li
-                key={item._id}
-                className="item-cards__content"
-                onClick={handleOpenModal}
-              >
+              <li className="item-cards__content">
                 <ItemCard
                   name={item.name}
                   link={item.link}
                   weather={item.weather}
+                  key={item._id}
+                  onClick={handleOpenModal}
                 />
               </li>
             );

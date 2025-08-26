@@ -11,13 +11,15 @@ import ItemModal from "../ItemModal/ItemModal";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
   }
 
-  function handleOpenPreviewModal() {
+  function handleOpenPreviewModal(item) {
     setActiveModal("preview");
+    setSelectedItem(item);
   }
 
   function handleCloseModal() {
@@ -28,7 +30,7 @@ const App = ({ name, link }) => {
     <div className="page">
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
-      <ItemCards handleOpenModal={handleOpenPreviewModal} />
+      <ItemCards handleOpenModal={handleOpenPreviewModal(selectedItem)} />
       {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
       <Footer />
       <ModalWithForm
