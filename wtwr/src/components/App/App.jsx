@@ -7,6 +7,7 @@ import ItemCards from "../ItemCards/ItemCards";
 import Footer from "../Footer/Footer";
 // import ItemCard from "../ItemCard/ItemCard";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
@@ -28,11 +29,12 @@ const App = ({ name, link }) => {
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
       <ItemCards />
-      {/* <Footer /> */}
+      <Footer />
       <ModalWithForm
         isOpen={activeModal === "add-clothes"}
         onClose={handleCloseModal}
       />
+      <ItemModal />
     </div>
   );
 };

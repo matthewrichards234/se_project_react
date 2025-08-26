@@ -5,8 +5,8 @@ import "./ItemCards.css";
 
 const ItemCards = () => {
   return (
-    <div>
-      <ul className="item-cards">
+    <div className="item-cards">
+      <ul className="item-cards__ul">
         {defaultClothingItems
           .filter((item) => item.weather.toLowerCase() === "warm")
           .map((item) => {

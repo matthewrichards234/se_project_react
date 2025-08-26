@@ -3,6 +3,7 @@
   height: 326px;
   display: flex;
   position: relative;
+  cursor: pointer;
 }
 
 .item-card__img {
