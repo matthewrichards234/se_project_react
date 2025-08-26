@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
 import Footer from "../Footer/Footer";
-// import ItemCard from "../ItemCard/ItemCard";
+import ItemCard from "../ItemCard/ItemCard";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 
@@ -28,13 +28,17 @@ const App = ({ name, link }) => {
     <div className="page">
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
-      <ItemCards />
+      <ItemCards handleOpenModal={handleOpenPreviewModal} />
+      <ItemCard handleOpenModal={handleOpenPreviewModal} />
       <Footer />
       <ModalWithForm
         isOpen={activeModal === "add-clothes"}
         onClose={handleCloseModal}
       />
-      <ItemModal />
+      <ItemModal
+        isOpen={activeModal === "preview"}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

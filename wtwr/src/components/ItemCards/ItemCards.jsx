@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import "./ItemCards.css";
 
-const ItemCards = () => {
+const ItemCards = ({ handleOpenModal }) => {
   return (
     <div className="item-cards">
       <ul className="item-cards__ul">

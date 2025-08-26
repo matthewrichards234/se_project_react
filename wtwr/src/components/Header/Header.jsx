@@ -4,7 +4,7 @@ import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const Header = ({ handleOpenModal, handleCloseModal }) => {
+const Header = ({ handleOpenModal }) => {
   const date = new Date();
   const options = {
     month: "long",
