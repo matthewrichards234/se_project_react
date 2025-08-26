@@ -30,7 +30,7 @@ const App = ({ name, link }) => {
     <div className="page">
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
-      <ItemCards handleOpenModal={handleOpenPreviewModal(selectedItem)} />
+      <ItemCards handleOpenModal={handleOpenPreviewModal} />
       {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
       <Footer />
       <ModalWithForm
