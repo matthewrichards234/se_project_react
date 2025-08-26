@@ -9,7 +9,6 @@ import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const App = ({ name, link }) => {
-  // const [state, setState] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
 
   function handleOpenClothingModal() {
@@ -20,13 +19,20 @@ const App = ({ name, link }) => {
     setActiveModal("preview");
   }
 
+  function handleCloseModal() {
+    setActiveModal("");
+  }
+
   return (
     <div className="page">
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
       <ItemCards />
       {/* <Footer /> */}
-      <ModalWithForm isOpen={activeModal === "add-clothes"} />
+      <ModalWithForm
+        isOpen={activeModal === "add-clothes"}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

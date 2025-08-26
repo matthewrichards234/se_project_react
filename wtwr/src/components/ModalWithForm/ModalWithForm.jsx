@@ -77,6 +77,7 @@ const modal = ({ isOpen, onClose }) => {
           type="button"
           aria-label="Close modal"
           className="modal__close-btn"
+          onClick={onClose}
         ></button>
       </div>
     </div>
