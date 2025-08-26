@@ -29,7 +29,7 @@ const App = ({ name, link }) => {
       <Header handleOpenModal={handleOpenClothingModal} />
       <WeatherCard />
       <ItemCards handleOpenModal={handleOpenPreviewModal} />
-      <ItemCard handleOpenModal={handleOpenPreviewModal} />
+      {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
       <Footer />
       <ModalWithForm
         isOpen={activeModal === "add-clothes"}
