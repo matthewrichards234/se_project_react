@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const App = ({ name, link }) => {
-  const [state, setState] = useState(defaultClothingItems);
+  // const [state, setState] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
 
   function handleOpenClothingModal() {
