@@ -10,6 +10,7 @@
 }
 
 .modal__image {
+  border-radius: 12px;
 }
 
 .modal__header {
