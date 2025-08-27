@@ -6,8 +6,8 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
 import Footer from "../Footer/Footer";
 import ItemCard from "../ItemCard/ItemCard";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
@@ -40,6 +40,7 @@ const App = ({ name, link }) => {
       <ItemModal
         isOpen={activeModal === "preview"}
         onClose={handleCloseModal}
+        item={selectedItem}
       />
     </div>
   );
