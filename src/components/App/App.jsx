@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import "./App.css";
 import Header from "../Header/Header";
@@ -22,9 +22,25 @@ const App = ({ name, link }) => {
     setSelectedItem(item);
   }
 
-  function handleCloseModal() {
+  function closeAllModals() {
     setActiveModal("");
   }
+
+  useEffect(() => {
+    // On keypress, call handleCloseModal.
+    // check for an event on keydown
+    function handleEscapeClose(e) {
+      if (e.key === "Escape") {
+        closeAllModals();
+      }
+    }
+    document.addEventListener("keydown", handleEscapeClose);
+
+    // Clean up function.
+    return () => {
+      document.removeEventListener("keydown", handleEscapeClose);
+    };
+  }, [activeModal]);
 
   return (
     <div className="page">
@@ -35,11 +51,11 @@ const App = ({ name, link }) => {
       <Footer />
       <ModalWithForm
         isOpen={activeModal === "add-clothes"}
-        onClose={handleCloseModal}
+        onClose={closeAllModals}
       />
       <ItemModal
         isOpen={activeModal === "preview"}
-        onClose={handleCloseModal}
+        onClose={closeAllModals}
         item={selectedItem}
       />
     </div>

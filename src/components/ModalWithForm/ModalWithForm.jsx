@@ -2,42 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./ModalWithForm.css";
 
 const Modal = ({ isOpen, onClose }) => {
-  // const initialValues = {
-  //   name: "",
-  //   image: "",
-  //   weather: "",
-  // };
-  // const [formValues, setFormValues] = useState(initialValues);
-  // const [error, setError] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormValues({ ...formValues, [name]: value });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setError(validate(formValues));
-  //   setIsSubmit(true);
-  // };
-
-  // const validate = (values) => {
-  //   const errors = {};
-  //   if (!values.name) errors.name = "Name is required";
-  //   if (!values.image) errors.image = "Image is required";
-  //   if (!values.weather) errors.weather = "Weather is required";
-  //   return errors;
-  // };
-
-  // useEffect(() => {
-  //   if (Object.keys(error).length === 0 && isSubmit) {
-  //     console.log(formValues);
-  //     // setFormValues(initialValues);
-  //     // onClose();
-  //   }
-  // }, [error]);
-
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
