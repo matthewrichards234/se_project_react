@@ -10,17 +10,31 @@ import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import { apiKey, longitude, latitude } from "../../utils/constants";
 import { weatherApi } from "../../utils/weatherApi";
-import { DegreesContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
   const weather = weatherApi();
-  weather.then((data) => {
-    const temp = Math.round(data.main.feels_like);
-    setCurrTemp(temp);
-  });
+  weather
+    .then((data) => {
+      const tempF = Math.round(data.main.feels_like);
+      const tempC = Math.round(((tempF - 32) * 5) / 9);
+      // console.log("Temp C: " + tempC);
+      setCurrTemp(tempF);
+    })
+    .catch((error) => {
+      console.error();
+      weather.temperature = {
+        F: tempF,
+        C: tempC,
+      };
+      return weather;
+    });
+
+  // console.log(weather.temperature);
+
   // const temp = Math.round(data.main.feels_like);
   const [currTemp, setCurrTemp] = useState(null);
 
@@ -37,6 +51,12 @@ const App = ({ name, link }) => {
 
   function closeAllModals() {
     setActiveModal("");
+  }
+
+  function handleToggleSwitchChange() {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   }
 
   useEffect(() => {
@@ -57,18 +77,16 @@ const App = ({ name, link }) => {
 
   useEffect(() => {
     const weather = weatherApi();
-    console.log(typeof weather);
     weather.then((data) => {
-      console.log(data);
-      console.log(Object.keys(data));
       const temp = Math.round(data.main.feels_like);
-      console.log(temp);
     });
   }, []);
 
   return (
     <div className="page">
-      <DegreesContext.Provider>
+      <CurrentUnitTemperatureContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
         <Header handleOpenModal={handleOpenClothingModal} />
         <WeatherCard temperature={currTemp} />
         <ItemCards handleOpenModal={handleOpenPreviewModal} />
@@ -83,7 +101,7 @@ const App = ({ name, link }) => {
           onClose={closeAllModals}
           item={selectedItem}
         />
-      </DegreesContext.Provider>
+      </CurrentUnitTemperatureContext.Provider>
     </div>
   );
 };
