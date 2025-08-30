@@ -3,6 +3,7 @@ import "./Header.css";
 import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const Header = ({ handleOpenModal }) => {
   const date = new Date();
@@ -18,6 +19,7 @@ const Header = ({ handleOpenModal }) => {
         {date.toLocaleString("en-GB", options)}
         {", New York"}
       </p>
+      <ToggleSwitch className="header__toggle-switch" />
       <button
         className="header__add-clothes"
         type="button"
