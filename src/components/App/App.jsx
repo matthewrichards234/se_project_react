@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import "./App.css";
 import Header from "../Header/Header";
@@ -10,6 +10,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import { apiKey, longitude, latitude } from "../../utils/constants";
 import { weatherApi } from "../../utils/weatherApi";
+import { DegreesContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
@@ -22,6 +23,8 @@ const App = ({ name, link }) => {
   });
   // const temp = Math.round(data.main.feels_like);
   const [currTemp, setCurrTemp] = useState(null);
+
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -65,20 +68,22 @@ const App = ({ name, link }) => {
 
   return (
     <div className="page">
-      <Header handleOpenModal={handleOpenClothingModal} />
-      <WeatherCard temperature={currTemp} />
-      <ItemCards handleOpenModal={handleOpenPreviewModal} />
-      {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
-      <Footer />
-      <ModalWithForm
-        isOpen={activeModal === "add-clothes"}
-        onClose={closeAllModals}
-      />
-      <ItemModal
-        isOpen={activeModal === "preview"}
-        onClose={closeAllModals}
-        item={selectedItem}
-      />
+      <DegreesContext.Provider>
+        <Header handleOpenModal={handleOpenClothingModal} />
+        <WeatherCard temperature={currTemp} />
+        <ItemCards handleOpenModal={handleOpenPreviewModal} />
+        {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
+        <Footer />
+        <ModalWithForm
+          isOpen={activeModal === "add-clothes"}
+          onClose={closeAllModals}
+        />
+        <ItemModal
+          isOpen={activeModal === "preview"}
+          onClose={closeAllModals}
+          item={selectedItem}
+        />
+      </DegreesContext.Provider>
     </div>
   );
 };
