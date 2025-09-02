@@ -3,8 +3,8 @@ import { useContext } from "react";
 import "./WeatherCard.css";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const WeatherCard = ({ temperature }) => {
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
+const WeatherCard = () => {
+  const { temperature, currentTemperatureUnit } = useContext(
     CurrentUnitTemperatureContext
   );
   return (
@@ -12,11 +12,12 @@ const WeatherCard = ({ temperature }) => {
       <div className="weather-card__container">
         {/* hard coded temperature */}
         <h1 className="weather-card__temperature">
-          {temperature}°{currentTemperatureUnit}
+          {temperature[currentTemperatureUnit]}°{currentTemperatureUnit}
         </h1>
       </div>
       <h2 className="weather-card__notification">
-        Today is {temperature}°{currentTemperatureUnit} / You may want to wear:
+        Today is {temperature[currentTemperatureUnit]}°{currentTemperatureUnit}{" "}
+        / You may want to wear:
       </h2>
     </div>
   );

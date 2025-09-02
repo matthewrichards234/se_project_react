@@ -15,30 +15,8 @@ import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperature
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
-
-  const weather = weatherApi();
-  weather
-    .then((data) => {
-      const tempF = Math.round(data.main.feels_like);
-      const tempC = Math.round(((tempF - 32) * 5) / 9);
-      // console.log("Temp C: " + tempC);
-      setCurrTemp(tempF);
-    })
-    .catch((error) => {
-      console.error();
-      weather.temperature = {
-        F: tempF,
-        C: tempC,
-      };
-      return weather;
-    });
-
-  // console.log(weather.temperature);
-
-  // const temp = Math.round(data.main.feels_like);
-  const [currTemp, setCurrTemp] = useState(null);
-
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [temperature, setTemperature] = useState({ F: null, C: null });
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -60,35 +38,38 @@ const App = ({ name, link }) => {
   }
 
   useEffect(() => {
-    // On keypress, call handleCloseModal.
-    // check for an event on keydown
     function handleEscapeClose(e) {
       if (e.key === "Escape") {
         closeAllModals();
       }
     }
     document.addEventListener("keydown", handleEscapeClose);
-
-    // Clean up function.
     return () => {
       document.removeEventListener("keydown", handleEscapeClose);
     };
   }, [activeModal]);
 
   useEffect(() => {
-    const weather = weatherApi();
-    weather.then((data) => {
-      const temp = Math.round(data.main.feels_like);
-    });
+    weatherApi()
+      .then((data) => {
+        const tempF = Math.round(data.main.feels_like);
+        const tempC = Math.round(((tempF - 32) * 5) / 9);
+        setTemperature({ F: tempF, C: tempC });
+      })
+      .catch(console.error);
   }, []);
 
   return (
     <div className="page">
       <CurrentUnitTemperatureContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        value={{
+          temperature,
+          currentTemperatureUnit,
+          handleToggleSwitchChange,
+        }}
       >
         <Header handleOpenModal={handleOpenClothingModal} />
-        <WeatherCard temperature={currTemp} />
+        <WeatherCard />
         <ItemCards handleOpenModal={handleOpenPreviewModal} />
         {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
         <Footer />
