@@ -55,6 +55,7 @@ const App = ({ name, link }) => {
         const tempF = Math.round(data.main.feels_like);
         const tempC = Math.round(((tempF - 32) * 5) / 9);
         setTemperature({ F: tempF, C: tempC });
+        console.log(data);
       })
       .catch(console.error);
   }, []);
