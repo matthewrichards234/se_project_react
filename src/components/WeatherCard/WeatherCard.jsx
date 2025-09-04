@@ -11,10 +11,13 @@ const WeatherCard = () => {
   const weatherImage = weatherCardConditions[weatherData.condition]["morning"];
   return (
     <div className="weather-card">
-      <div className="weather-card__container">
+      <div
+        className="weather-card__container"
+        style={{ backgroundImage: `url(${weatherImage})` }}
+      >
         <h1 className="weather-card__temperature">
           {temperature[currentTemperatureUnit]}°{currentTemperatureUnit}
-          <img src={weatherImage} alt="" className="weather-card__img" />
+          {/* <img src={weatherImage} alt="" className="weather-card__img" /> */}
         </h1>
       </div>
       <h2 className="weather-card__notification">

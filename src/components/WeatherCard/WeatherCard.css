@@ -11,10 +11,10 @@
 
   /* For static website only bg-img & color */
   /* background-image: url(../../assets/Images/static-weather-sample.svg); */
-  background-color: #00a3ff;
+  /* background-color: #00a3ff;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center; */
 }
 
 .weather-card__temperature {

@@ -26,3 +26,14 @@ export const getWeatherCondition = (temp) => {
     // Cold
   }
 };
+
+export const isDay = () => {
+  let isDay;
+
+  // check by new Date what time is that now
+  // between, say, 6 and 20 this is day, other time is night
+  // return boolean relatively
+  // use image relatively
+
+  return;
+};
