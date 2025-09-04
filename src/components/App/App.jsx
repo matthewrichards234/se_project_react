@@ -11,12 +11,14 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import { apiKey, longitude, latitude } from "../../utils/constants";
 import { weatherApi } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
+import Main from "../Main/Main";
 
 const App = ({ name, link }) => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [temperature, setTemperature] = useState({ F: null, C: null });
+  const [weatherCondition, setWeatherCondition] = useState("");
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -52,9 +54,21 @@ const App = ({ name, link }) => {
   useEffect(() => {
     weatherApi()
       .then((data) => {
+        // Set temperature in both F and C.
         const tempF = Math.round(data.main.feels_like);
         const tempC = Math.round(((tempF - 32) * 5) / 9);
         setTemperature({ F: tempF, C: tempC });
+
+        // Set weather condition (Sunny, Rainy, etc.)
+
+        // Condition is name of weather.
+        const condition = data.weather[0].main;
+
+        // ID of weather (You can use this too to set the weather card if needed).
+        const weatherId = data.weather[0].id;
+        console.log(condition);
+        setWeatherCondition(condition);
+
         console.log(data);
       })
       .catch(console.error);
@@ -70,9 +84,7 @@ const App = ({ name, link }) => {
         }}
       >
         <Header handleOpenModal={handleOpenClothingModal} />
-        <WeatherCard />
-        <ItemCards handleOpenModal={handleOpenPreviewModal} />
-        {/* <ItemCard handleOpenModal={handleOpenPreviewModal} /> */}
+        <Main handleOpenPreviewModal={handleOpenPreviewModal} />
         <Footer />
         <ModalWithForm
           isOpen={activeModal === "add-clothes"}

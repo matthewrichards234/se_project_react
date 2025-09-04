@@ -6,8 +6,6 @@ import { CurrentUnitTemperatureContext } from "./contexts/CurrentTemperatureUnit
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CurrentUnitTemperatureContext>
-      <App />
-    </CurrentUnitTemperatureContext>
+    <App />
   </StrictMode>
 );
