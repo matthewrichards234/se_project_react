@@ -67,6 +67,7 @@ const App = ({ name, link }) => {
         // ID of weather (You can use this too to set the weather card if needed).
         const weatherId = data.weather[0].id;
         console.log(condition);
+        console.log(weatherId);
         setWeatherCondition(condition);
 
         console.log(data);
