@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import { apiKey, longitude, latitude } from "../../utils/constants";
-import { weatherApi } from "../../utils/weatherApi";
+import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Main from "../Main/Main";
 import { weatherCardConditions } from "../../utils/weatherConditions";
@@ -20,6 +20,7 @@ const App = ({ name, link }) => {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [weatherData, setWeatherData] = useState({
     temp: { F: null, C: null },
+    clothing: "",
     condition: "Default",
     isDay: true,
     city: "",
@@ -62,8 +63,9 @@ const App = ({ name, link }) => {
         // Set temperature in both F and C.
         const tempF = Math.round(data.main.feels_like);
         const tempC = Math.round(((tempF - 32) * 5) / 9);
+        const clothing = getWeatherCondition(tempF);
 
-        let currWeather = { temp: { C: tempC, F: tempF } };
+        let currWeather = { temp: { C: tempC, F: tempF }, clothing: clothing };
 
         // Set weather condition (Sunny, Rainy, etc.)
 
@@ -83,6 +85,8 @@ const App = ({ name, link }) => {
       })
       .catch(console.error);
   }, []);
+
+  console.log(weatherData);
 
   return (
     <div className="page">

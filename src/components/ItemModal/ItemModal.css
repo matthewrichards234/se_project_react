@@ -1,6 +1,6 @@
 .modal__container_preview {
   border: solid 1px black;
-  padding: 28px 28px 36px 28px;
+  padding: 0;
   max-width: 498px;
   height: 610px;
   width: 100%;

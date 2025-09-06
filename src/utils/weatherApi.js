@@ -4,26 +4,21 @@ import { apiKey, longitude, latitude } from "./constants";
 export const weatherApi = () => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
 
-  return (
-    fetch(url)
-      .then((res) => res.json())
-      // .then((data) => {
-      //   console.log(data);
-      // })
-      .catch((error) => {
-        console.error(error);
-      })
-  );
+  return fetch(url)
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 // Accepts "temp" in Fahrenheit.
 export const getWeatherCondition = (temp) => {
   if (temp >= 86) {
-    // Hot
+    return "hot";
   } else if (temp < 86 && temp >= 66) {
-    // Warm
+    return "warm";
   } else {
-    // Cold
+    return "cold";
   }
 };
 
