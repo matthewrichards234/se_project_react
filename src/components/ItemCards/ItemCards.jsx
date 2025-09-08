@@ -4,7 +4,7 @@ import { defaultClothingItems } from "../../utils/clothingItems";
 import "./ItemCards.css";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const ItemCards = ({ handleOpenModal }) => {
+const ItemCards = ({ handleOpenModal, clothingItems }) => {
   const { weatherData } = useContext(CurrentUnitTemperatureContext);
   return (
     <div className="item-cards">
