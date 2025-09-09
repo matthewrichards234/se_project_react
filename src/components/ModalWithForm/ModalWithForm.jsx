@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ModalWithForm.css";
 
+// Add Clothing Modal
 const Modal = ({ isOpen, onClose }) => {
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>

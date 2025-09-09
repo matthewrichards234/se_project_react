@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import "./App.css";
 import Header from "../Header/Header";
-import WeatherCard from "../WeatherCard/WeatherCard";
-import ItemCards from "../ItemCards/ItemCards";
 import Footer from "../Footer/Footer";
-// import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-// import { apiKey, longitude, latitude } from "../../utils/constants";
+import Main from "../Main/Main";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
-import Main from "../Main/Main";
-import { weatherCardConditions } from "../../utils/weatherConditions";
+import { Routes, Route } from "react-router-dom";
 
 const App = ({ name, link }) => {
+  <Routes>
+    <Route></Route>
+  </Routes>;
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");

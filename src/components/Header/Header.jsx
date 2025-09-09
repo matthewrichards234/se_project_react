@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Header.css";
 import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Routes, Route } from "react-router-dom";
 
 const Header = ({ handleOpenModal }) => {
   const date = new Date();
