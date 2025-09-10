@@ -1,14 +1,7 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 const Profile = () => {
-  return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
-  );
+  return <div>Profile</div>;
 };
 
 export default Profile;

@@ -90,13 +90,11 @@ const App = ({ name, link }) => {
           weatherData,
         }}
       >
+        <Header handleOpenModal={handleOpenClothingModal} />
         <Routes>
-          {/* <Route path="/" element={<Main />}></Route> */}
+          <Route path="/" element={<Main />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
         </Routes>
-
-        <Header handleOpenModal={handleOpenClothingModal} />
-        <Main handleOpenPreviewModal={handleOpenPreviewModal} />
         <Footer />
         <ModalWithForm
           isOpen={activeModal === "add-clothes"}
