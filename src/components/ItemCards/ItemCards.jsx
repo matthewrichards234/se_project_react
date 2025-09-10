@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import "./ItemCards.css";
@@ -6,6 +6,7 @@ import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperature
 
 const ItemCards = ({ handleOpenModal, clothingItems }) => {
   const { weatherData } = useContext(CurrentUnitTemperatureContext);
+
   return (
     <div className="item-cards">
       <ul className="item-cards__ul">

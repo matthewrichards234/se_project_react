@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ModalWithForm.css";
 
-// Add Clothing Modal
-const Modal = ({ isOpen, onClose }) => {
+// Add Item Modal
+const ModalWithForm = ({ isOpen, onClose }) => {
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
@@ -89,4 +89,4 @@ const Modal = ({ isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default ModalWithForm;

@@ -1,11 +1,13 @@
 .item-cards {
-  width: 1360px;
+  max-width: 1360px;
+  width: 100%;
   padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .item-cards__ul {
   display: grid;
-  max-width: 1360px;
   grid-template-columns: repeat(auto-fill, minmax(323px, 1fr));
   gap: 21px;
   padding: 0;
