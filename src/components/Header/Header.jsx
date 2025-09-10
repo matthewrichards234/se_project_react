@@ -3,7 +3,7 @@ import "./Header.css";
 import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { Routes, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = ({ handleOpenModal }) => {
   const date = new Date();
@@ -14,7 +14,9 @@ const Header = ({ handleOpenModal }) => {
 
   return (
     <div className="header">
-      <img src={Logo} alt="WTWR Logo" className="header__logo" />
+      <NavLink to="/">
+        <img src={Logo} alt="WTWR Logo" className="header__logo" />
+      </NavLink>
       <p className="header__date-location">
         {date.toLocaleString("en-GB", options)}
         {", New York"}
@@ -28,7 +30,9 @@ const Header = ({ handleOpenModal }) => {
         + Add clothes
       </button>
       <p className="header__user-name">Terrence Tegegne</p>
-      <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
+      <NavLink to="/profile">
+        <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
+      </NavLink>
     </div>
   );
 };

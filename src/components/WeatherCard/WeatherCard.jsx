@@ -8,7 +8,7 @@ const WeatherCard = () => {
   const { temperature, currentTemperatureUnit, weatherData } = useContext(
     CurrentUnitTemperatureContext
   );
-  const weatherImage = weatherCardConditions[weatherData.condition]["morning"];
+  const weatherImage = weatherCardConditions["Default"]["morning"]; // weatherCardConditions[weatherData.condition]
   return (
     <div className="weather-card">
       <div

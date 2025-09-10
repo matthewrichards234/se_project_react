@@ -5,15 +5,12 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 
 const App = ({ name, link }) => {
-  <Routes>
-    <Route></Route>
-  </Routes>;
-
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -79,13 +76,9 @@ const App = ({ name, link }) => {
         currWeather.isDay = isDay;
 
         setWeatherData(currWeather);
-
-        console.log(data);
       })
       .catch(console.error);
   }, []);
-
-  console.log(weatherData);
 
   return (
     <div className="page">
@@ -97,6 +90,11 @@ const App = ({ name, link }) => {
           weatherData,
         }}
       >
+        <Routes>
+          {/* <Route path="/" element={<Main />}></Route> */}
+          <Route path="/profile" element={<Profile />}></Route>
+        </Routes>
+
         <Header handleOpenModal={handleOpenClothingModal} />
         <Main handleOpenPreviewModal={handleOpenPreviewModal} />
         <Footer />
