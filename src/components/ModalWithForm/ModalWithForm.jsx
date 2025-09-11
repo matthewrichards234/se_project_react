@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./ModalWithForm.css";
+import useForm from "../../hooks/useForm.js";
 
 // Add Item Modal
 const ModalWithForm = ({ isOpen, onClose }) => {
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    image: "",
+    weather: "",
+  });
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
