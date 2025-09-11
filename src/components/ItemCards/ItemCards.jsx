@@ -10,7 +10,7 @@ const ItemCards = ({ handleOpenModal, clothingItems }) => {
   return (
     <div className="item-cards">
       <ul className="item-cards__ul">
-        {defaultClothingItems
+        {clothingItems
           .filter((item) => item.weather.toLowerCase() === weatherData.clothing)
           .map((item) => {
             return (

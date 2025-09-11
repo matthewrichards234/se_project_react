@@ -3,18 +3,14 @@ import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
 
-const Main = ({ handleOpenPreviewModal, clothing }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  function handleOpenModal(item) {
-    setSelectedItem(item);
-    setIsModalOpen(true);
-  }
+const Main = ({ handleOpenPreviewModal, clothingItems }) => {
   return (
     <div>
       <WeatherCard />
-      <ItemCards handleOpenModal={handleOpenModal} clothing={clothing} />
+      <ItemCards
+        handleOpenModal={handleOpenPreviewModal}
+        clothingItems={clothingItems}
+      />
     </div>
   );
 };

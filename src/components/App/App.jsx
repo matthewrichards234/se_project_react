@@ -9,8 +9,10 @@ import Profile from "../Profile/Profile";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
+import { defaultClothingItems } from "../../utils/clothingItems";
 
-const App = ({ name, link }) => {
+const App = () => {
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -43,7 +45,7 @@ const App = ({ name, link }) => {
       : setCurrentTemperatureUnit("F");
   }
 
-  // function handleFormSubmission() {}
+  function handleFormSubmission() {}
 
   useEffect(() => {
     function handleEscapeClose(e) {
@@ -96,11 +98,23 @@ const App = ({ name, link }) => {
       >
         <Header handleOpenModal={handleOpenClothingModal} />
         <Routes>
-          <Route path="/" element={<Main />}></Route>
+          <Route
+            path="/"
+            element={
+              <Main
+                handleOpenPreviewModal={handleOpenPreviewModal}
+                clothingItems={clothingItems}
+              />
+            }
+          ></Route>
           <Route
             path="/profile"
             element={
-              <Profile handleOpenClothingModal={handleOpenClothingModal} />
+              <Profile
+                handleOpenClothingModal={handleOpenClothingModal}
+                handleOpenPreviewModal={handleOpenPreviewModal}
+                clothingItems={clothingItems}
+              />
             }
           ></Route>
         </Routes>

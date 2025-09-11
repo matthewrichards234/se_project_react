@@ -3,7 +3,11 @@ import "./ClothesSection.css";
 import ItemCards from "../ItemCards/ItemCards";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
-const ClothesSection = ({ handleOpenClothingModal }) => {
+const ClothesSection = ({
+  handleOpenClothingModal,
+  handleOpenPreviewModal,
+  clothingItems,
+}) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__container">
@@ -17,7 +21,10 @@ const ClothesSection = ({ handleOpenClothingModal }) => {
         </button>
         {/* AddItemModal logic here */}
       </div>
-      <ItemCards />
+      <ItemCards
+        handleOpenModal={handleOpenPreviewModal}
+        clothingItems={clothingItems}
+      />
       <AddItemModal />
     </div>
   );
