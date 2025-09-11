@@ -93,7 +93,12 @@ const App = ({ name, link }) => {
         <Header handleOpenModal={handleOpenClothingModal} />
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
+          <Route
+            path="/profile"
+            element={
+              <Profile handleOpenClothingModal={handleOpenClothingModal} />
+            }
+          ></Route>
         </Routes>
         <Footer />
         <ModalWithForm

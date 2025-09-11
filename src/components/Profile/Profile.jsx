@@ -3,11 +3,11 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-const Profile = () => {
+const Profile = ({ handleOpenClothingModal }) => {
   return (
     <div className="profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection handleOpenClothingModal={handleOpenClothingModal} />
     </div>
   );
 };
