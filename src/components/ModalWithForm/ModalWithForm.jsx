@@ -18,6 +18,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
             name="name"
             className="modal__input"
             placeholder="Name"
+            required
             // value={formValues.name}
             // onChange={handleChange}
           />
@@ -31,6 +32,8 @@ const ModalWithForm = ({ isOpen, onClose }) => {
             name="image"
             className="modal__input"
             placeholder="Image URL"
+            required
+            minLength={2}
             // value={formValues.image}
             // onChange={handleChange}
           />

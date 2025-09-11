@@ -22,6 +22,8 @@ const App = ({ name, link }) => {
     city: "",
   });
 
+  // const { register, handleSubmit } = useForm();
+
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
   }
@@ -40,6 +42,8 @@ const App = ({ name, link }) => {
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
   }
+
+  // function handleFormSubmission() {}
 
   useEffect(() => {
     function handleEscapeClose(e) {
