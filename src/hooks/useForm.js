@@ -1,12 +1,14 @@
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 
-export function useForm(defaultValues) {
-  const [values, setValues] = useForm(defaultValues);
+export default function useForm(defaultValues) {
+  const [values, setValues] = useState(defaultValues);
 
   const handleChange = (e) => {
-    const { value, name } = e.target;
-    setValues({ ...value, [name]: value });
+    const { name, value } = e.target;
+    setValues((prev) => ({ ...prev, [name]: value }));
   };
+
+  console.log(values);
 
   return { values, handleChange, setValues };
 }

@@ -25,8 +25,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
             className="modal__input"
             placeholder="Name"
             required
-            // value={formValues.name}
-            // onChange={handleChange}
+            onChange={handleChange}
           />
 
           <label htmlFor="image" className="modal__label">
@@ -40,8 +39,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
             placeholder="Image URL"
             required
             minLength={2}
-            // value={formValues.image}
-            // onChange={handleChange}
+            onChange={handleChange}
           />
 
           <label className="modal__label">Select the weather type:</label>
@@ -52,8 +50,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               name="weather"
               value="hot"
               className="modal__radio"
-              // checked={formValues.weather === "hot"}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
             Hot
           </label>
@@ -64,8 +61,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               name="weather"
               value="warm"
               className="modal__radio"
-              // checked={formValues.weather === "warm"}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
             Warm
           </label>
@@ -77,7 +73,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               value="cold"
               className="modal__radio"
               // checked={formValues.weather === "cold"}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
             Cold
           </label>
