@@ -24,8 +24,6 @@ const App = () => {
     city: "",
   });
 
-  // const { register, handleSubmit } = useForm();
-
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
   }
@@ -45,7 +43,11 @@ const App = () => {
       : setCurrentTemperatureUnit("F");
   }
 
-  function handleFormSubmission() {}
+  function handleAddItemSubmit(inputValues) {
+    console.log(inputValues);
+    setClothingItems([inputValues, ...clothingItems]);
+    closeAllModals();
+  }
 
   useEffect(() => {
     function handleEscapeClose(e) {
@@ -122,6 +124,7 @@ const App = () => {
         <ModalWithForm
           isOpen={activeModal === "add-clothes"}
           onClose={closeAllModals}
+          handleAddItemSubmit={handleAddItemSubmit}
         />
         <ItemModal
           isOpen={activeModal === "preview"}

@@ -11,6 +11,8 @@ const ItemCard = ({ item, handleOpenModal }) => {
       <div className="item-card" onClick={handlePreviewClick}>
         <p className="item-card__name">{item.name}</p>
         <img src={item.link} alt="" className="item-card__img" />
+        {/* Once adding API change from item.link -> item.imageUrl.
+          Same will apply for item modal. */}
       </div>
     </li>
   );

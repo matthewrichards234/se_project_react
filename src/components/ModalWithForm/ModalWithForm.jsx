@@ -3,18 +3,22 @@ import "./ModalWithForm.css";
 import useForm from "../../hooks/useForm.js";
 
 // Add Item Modal
-const ModalWithForm = ({ isOpen, onClose }) => {
-  const { values, handleChange, setValues } = useForm({
+const ModalWithForm = ({ isOpen, onClose, handleAddItemSubmit }) => {
+  const { values, handleChange } = useForm({
     name: "",
-    image: "",
+    imageUrl: "",
     weather: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddItemSubmit(values);
+  };
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
         <h1 className="modal__title">New garment</h1>
-        <form className="modal__form">
-          {/* onSubmit={handleSubmit} */}
+        <form className="modal__form" onSubmit={handleSubmit}>
           <label htmlFor="name" className="modal__label">
             Name
           </label>
@@ -26,6 +30,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
             placeholder="Name"
             required
             onChange={handleChange}
+            value={values.name}
           />
 
           <label htmlFor="image" className="modal__label">
@@ -34,12 +39,13 @@ const ModalWithForm = ({ isOpen, onClose }) => {
           <input
             type="url"
             id="image"
-            name="image"
+            name="imageUrl"
             className="modal__input"
             placeholder="Image URL"
             required
             minLength={2}
             onChange={handleChange}
+            value={values.imageUrl}
           />
 
           <label className="modal__label">Select the weather type:</label>
