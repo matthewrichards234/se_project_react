@@ -50,6 +50,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               name="weather"
               value="hot"
               className="modal__radio"
+              checked={values.weather === "hot"}
               onChange={handleChange}
             />
             Hot
@@ -61,6 +62,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               name="weather"
               value="warm"
               className="modal__radio"
+              checked={values.weather === "warm"}
               onChange={handleChange}
             />
             Warm
@@ -72,7 +74,7 @@ const ModalWithForm = ({ isOpen, onClose }) => {
               name="weather"
               value="cold"
               className="modal__radio"
-              // checked={formValues.weather === "cold"}
+              checked={values.weather === "cold"}
               onChange={handleChange}
             />
             Cold
