@@ -10,7 +10,7 @@ import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
-import { getItems } from "../../utils/api";
+import { addItem, getItems } from "../../utils/api";
 
 const App = () => {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -45,9 +45,12 @@ const App = () => {
   }
 
   function handleAddItemSubmit(inputValues) {
-    console.log(inputValues);
-    setClothingItems([inputValues, ...clothingItems]);
-    closeAllModals();
+    addItem(inputValues)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeAllModals();
+      })
+      .catch(console.error);
   }
 
   useEffect(() => {
