@@ -35,3 +35,8 @@
   background-repeat: no-repeat;
   cursor: pointer;
 }
+
+.modal__delete-btn {
+  color: #ff4d00;
+  cursor: pointer;
+}
