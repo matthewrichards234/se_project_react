@@ -10,6 +10,7 @@ import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
+import { getItems } from "../../utils/api";
 
 const App = () => {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -84,6 +85,14 @@ const App = () => {
         currWeather.isDay = isDay;
 
         setWeatherData(currWeather);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
       })
       .catch(console.error);
   }, []);
