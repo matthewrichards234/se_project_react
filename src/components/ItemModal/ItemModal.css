@@ -1,3 +1,7 @@
+.modal__footer {
+  display: flex;
+}
+
 .modal__container_preview {
   flex-direction: col;
   border: solid 1px black;

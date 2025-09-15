@@ -17,7 +17,7 @@ const ClothesSection = ({
           className="clothes-section__add-new"
           onClick={handleOpenClothingModal}
         >
-          Add new
+          + Add new
         </button>
         {/* AddItemModal logic here */}
       </div>
