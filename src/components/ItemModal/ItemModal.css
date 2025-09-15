@@ -43,4 +43,10 @@
 .modal__delete-btn {
   color: #ff4d00;
   cursor: pointer;
+  height: 14px;
+  width: 98px;
+  border: none;
+  background-color: transparent;
+  margin: 40px 25px 0 auto;
+  font-weight: 700;
 }
