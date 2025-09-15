@@ -53,16 +53,18 @@ const App = () => {
       .catch(console.error);
   }
 
-  function handleDeleteItem(item) {
-    deleteItem(item._id)
+  function handleDeleteItem(itemToDelete) {
+    deleteItem(itemToDelete._id)
       .then(() => {
         const result = clothingItems.filter((item) => {
-          return item._id !== deleteItem(id);
+          return item._id !== itemToDelete._id;
         });
+        setClothingItems(result);
         closeAllModals();
       })
       .catch(console.error);
   }
+
   useEffect(() => {
     function handleEscapeClose(e) {
       if (e.key === "Escape") {
@@ -152,6 +154,7 @@ const App = () => {
           isOpen={activeModal === "preview"}
           onClose={closeAllModals}
           item={selectedItem}
+          handleDeleteItem={handleDeleteItem}
         />
       </CurrentUnitTemperatureContext.Provider>
     </div>
