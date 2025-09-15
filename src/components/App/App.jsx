@@ -10,7 +10,7 @@ import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
-import { addItem, getItems } from "../../utils/api";
+import { addItem, deleteItem, getItems } from "../../utils/api";
 
 const App = () => {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -53,6 +53,16 @@ const App = () => {
       .catch(console.error);
   }
 
+  function handleDeleteItem(item) {
+    deleteItem(item._id)
+      .then(() => {
+        const result = clothingItems.filter((item) => {
+          return item._id !== deleteItem(id);
+        });
+        closeAllModals();
+      })
+      .catch(console.error);
+  }
   useEffect(() => {
     function handleEscapeClose(e) {
       if (e.key === "Escape") {

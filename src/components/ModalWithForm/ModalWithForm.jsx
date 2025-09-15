@@ -12,7 +12,7 @@ const ModalWithForm = ({ isOpen, onClose, handleAddItemSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddItemSubmit({ ...values, imageUrl: values.link });
+    handleAddItemSubmit({ ...values });
   };
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>

@@ -2,7 +2,10 @@ import React from "react";
 import "./ItemModal.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-const ItemModal = ({ isOpen, onClose, item }) => {
+const ItemModal = ({ isOpen, onClose, item, handleDeleteItem }) => {
+  function handleDelete() {
+    handleDeleteItem(item);
+  }
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container modal__container_preview">
@@ -14,7 +17,11 @@ const ItemModal = ({ isOpen, onClose, item }) => {
           className="modal__close-btn"
           onClick={onClose}
         ></button>
-        <button type="button" className="modal__delete-btn">
+        <button
+          type="button"
+          className="modal__delete-btn"
+          onClick={handleDelete}
+        >
           Delete item
         </button>
       </div>

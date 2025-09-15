@@ -6,3 +6,11 @@
   display: flex;
   gap: 20px;
 }
+
+.clothes-section__add-new {
+  /* border: none;
+  background-color: transparent;
+  margin-right: 20px;
+  padding: 0;
+  cursor: pointer; */
+}
