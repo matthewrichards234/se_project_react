@@ -1,9 +1,11 @@
 const baseUrl = "http://localhost:3001/";
 
+function handleServerResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
 function getItems() {
-  return fetch(`${baseUrl}items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(`${baseUrl}items`).then(handleServerResponse);
 }
 
 function addItem({ name, imageUrl, weather }) {
@@ -13,9 +15,7 @@ function addItem({ name, imageUrl, weather }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 }
 
 function deleteItem(id) {
@@ -24,9 +24,7 @@ function deleteItem(id) {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 }
 
 export { getItems, addItem, deleteItem };
