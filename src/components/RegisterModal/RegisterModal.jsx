@@ -12,7 +12,6 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleOnSubmit(values);
-    console.log(values);
   };
 
   return (
