@@ -6,9 +6,10 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { addItem, deleteItem, getItems } from "../../utils/api";
 
@@ -24,6 +25,8 @@ const App = () => {
     isDay: true,
     city: "",
   });
+  // Handle login (T/F) depending on user's status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -124,6 +127,17 @@ const App = () => {
       >
         <Header handleOpenModal={handleOpenClothingModal} />
         <Routes>
+          {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
+          <Route
+            path="*"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/profile" replace />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          ></Route>
           <Route
             path="/"
             element={
@@ -136,11 +150,14 @@ const App = () => {
           <Route
             path="/profile"
             element={
-              <Profile
-                handleOpenClothingModal={handleOpenClothingModal}
-                handleOpenPreviewModal={handleOpenPreviewModal}
-                clothingItems={clothingItems}
-              />
+              // Protect the /profile route by wrapping it in a component that redirects unauthorized users to the main page
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Profile
+                  handleOpenClothingModal={handleOpenClothingModal}
+                  handleOpenPreviewModal={handleOpenPreviewModal}
+                  clothingItems={clothingItems}
+                />
+              </ProtectedRoute>
             }
           ></Route>
         </Routes>
