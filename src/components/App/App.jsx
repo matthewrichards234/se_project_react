@@ -107,7 +107,7 @@ const App = () => {
   useEffect(() => {
     getItems()
       .then((items) => {
-        setClothingItems(items);
+        setClothingItems(items.data.reverse());
       })
       .catch(console.error);
   }, []);
