@@ -14,6 +14,7 @@ import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperature
 import { Routes, Route, Navigate } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { addItem, deleteItem, getItems } from "../../utils/api";
+import auth from "../../utils/auth";
 
 const App = () => {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -78,14 +79,35 @@ const App = () => {
       .catch(console.error);
   }
 
+  // TO-DO: Finish both functions logic below...
   function handleRegisterUser(inputValues) {
     // 1. Get values from 'RegisterModal' form upon submission.
+    // Check if email and password are provided.
+    if (inputValues.email && inputValues.password) {
+      auth
+        .signup(...inputValues) // NOTE: Make sure destructuring here is used properly.
+        .then(() => {
+          // Handle successful registration.
+        })
+        .catch(console.error);
+    }
     // 2. Close modal
+    closeAllModals();
     // 3. Reset form.
+    inputValues.reset();
     // 4. Sign user in via inputted credentials.
   }
 
-  function handleLoginUser(inputValues) {}
+  function handleLoginUser(inputValues) {
+    // 1. Get values from 'LoginModal' form upon submission.
+    // 2. Close modal
+    // 3. Reset Form.
+    // 4. Log user in and redirect to profile page.
+  }
+
+  function handleSignInRequest() {
+    // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage
+  }
 
   useEffect(() => {
     function handleEscapeClose(e) {

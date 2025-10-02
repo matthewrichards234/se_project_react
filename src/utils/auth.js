@@ -6,6 +6,8 @@ function signup({ email, password, name, avatar }) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, avatar, email, password }),
+  }).then((res) => {
+    return handleServerResponse(res);
   });
 }
 
@@ -15,5 +17,9 @@ function signin({ email, password }) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
+  }).then((res) => {
+    return handleServerResponse(res);
   });
 }
+
+export default { signup, signin };
