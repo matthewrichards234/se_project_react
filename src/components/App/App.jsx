@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, act } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
@@ -35,6 +37,14 @@ const App = () => {
   function handleOpenPreviewModal(item) {
     setActiveModal("preview");
     setSelectedItem(item);
+  }
+
+  function handleOpenLoginModal() {
+    setActiveModal("login");
+  }
+
+  function handleOpenSignupModal() {
+    setActiveModal("signup");
   }
 
   function closeAllModals() {
@@ -125,7 +135,11 @@ const App = () => {
           weatherData,
         }}
       >
-        <Header handleOpenModal={handleOpenClothingModal} />
+        <Header
+          handleOpenModal={handleOpenClothingModal}
+          handleOpenLoginModal={handleOpenLoginModal}
+          handleOpenSignupModal={handleOpenSignupModal}
+        />
         <Routes>
           {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
           <Route
@@ -172,6 +186,11 @@ const App = () => {
           onClose={closeAllModals}
           item={selectedItem}
           handleDeleteItem={handleDeleteItem}
+        />
+        <LoginModal isOpen={activeModal === "login"} onClose={closeAllModals} />
+        <RegisterModal
+          isOpen={activeModal === "signup"}
+          onClose={closeAllModals}
         />
       </CurrentUnitTemperatureContext.Provider>
     </div>

@@ -5,7 +5,12 @@ import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ handleOpenModal, isLoggedIn }) => {
+const Header = ({
+  handleOpenModal,
+  handleOpenLoginModal,
+  handleOpenSignupModal,
+  isLoggedIn,
+}) => {
   const date = new Date();
   const options = {
     month: "long",
@@ -38,8 +43,20 @@ const Header = ({ handleOpenModal, isLoggedIn }) => {
         </>
       ) : (
         <>
-          <button>Sign Up</button>
-          <button>Login In</button>
+          <button
+            type="button"
+            className="header__login-btn"
+            onClick={handleOpenSignupModal}
+          >
+            Sign Up
+          </button>
+          <button
+            type="button"
+            className="header__login-btn"
+            onClick={handleOpenLoginModal}
+          >
+            Login In
+          </button>
         </>
       )}
     </div>
