@@ -5,7 +5,7 @@ import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ handleOpenModal }) => {
+const Header = ({ handleOpenModal, isLoggedIn }) => {
   const date = new Date();
   const options = {
     month: "long",
@@ -22,17 +22,26 @@ const Header = ({ handleOpenModal }) => {
         {", New York"}
       </p>
       <ToggleSwitch className="header__toggle-switch" />
-      <button
-        className="header__add-clothes"
-        type="button"
-        onClick={handleOpenModal}
-      >
-        + Add clothes
-      </button>
-      <p className="header__user-name">Terrence Tegegne</p>
-      <NavLink to="/profile">
-        <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
-      </NavLink>
+      {isLoggedIn ? (
+        <>
+          <button
+            className="header__add-clothes"
+            type="button"
+            onClick={handleOpenModal}
+          >
+            + Add clothes
+          </button>
+          <p className="header__user-name">Terrence Tegegne</p>
+          <NavLink to="/profile">
+            <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
+          </NavLink>
+        </>
+      ) : (
+        <>
+          <button>Sign Up</button>
+          <button>Login In</button>
+        </>
+      )}
     </div>
   );
 };
