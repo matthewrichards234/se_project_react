@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
@@ -145,10 +145,10 @@ const App = () => {
           ></Route>
         </Routes>
         <Footer />
-        <ModalWithForm
+        <AddItemModal
           isOpen={activeModal === "add-clothes"}
           onClose={closeAllModals}
-          handleAddItemSubmit={handleAddItemSubmit}
+          handleOnSubmit={handleAddItemSubmit}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
