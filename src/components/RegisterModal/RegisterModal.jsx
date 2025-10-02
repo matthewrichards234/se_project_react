@@ -12,6 +12,7 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleOnSubmit(values);
+    console.log(values);
   };
 
   return (
@@ -22,12 +23,12 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
       title="Sign Up"
       submitText="Next"
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email*
       </label>
       <input
         type="email"
-        id="email"
+        id="register-email"
         name="email"
         className="modal__input"
         placeholder="Email"
@@ -36,12 +37,12 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
         value={values.email}
       />
 
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password*
       </label>
       <input
         type="password"
-        id="password"
+        id="register-password"
         name="password"
         className="modal__input"
         placeholder="Password"

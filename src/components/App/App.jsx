@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -77,6 +77,15 @@ const App = () => {
       })
       .catch(console.error);
   }
+
+  function handleRegisterUser(inputValues) {
+    // 1. Get values from 'RegisterModal' form upon submission.
+    // 2. Close modal
+    // 3. Reset form.
+    // 4. Sign user in via inputted credentials.
+  }
+
+  function handleLoginUser(inputValues) {}
 
   useEffect(() => {
     function handleEscapeClose(e) {
@@ -187,10 +196,15 @@ const App = () => {
           item={selectedItem}
           handleDeleteItem={handleDeleteItem}
         />
-        <LoginModal isOpen={activeModal === "login"} onClose={closeAllModals} />
+        <LoginModal
+          isOpen={activeModal === "login"}
+          onClose={closeAllModals}
+          handleOnSubmit={handleLoginUser}
+        />
         <RegisterModal
           isOpen={activeModal === "signup"}
           onClose={closeAllModals}
+          handleOnSubmit={handleRegisterUser}
         />
       </CurrentUnitTemperatureContext.Provider>
     </div>
