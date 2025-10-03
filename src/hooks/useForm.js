@@ -6,10 +6,11 @@ export default function useForm(defaultValues) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
-    console.log(name, values);
   };
 
-  // console.log(values);
+  const resetForm = () => {
+    setValues(defaultValues);
+  };
 
-  return { values, handleChange, setValues };
+  return { values, handleChange, setValues, resetForm };
 }

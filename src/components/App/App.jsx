@@ -30,6 +30,8 @@ const App = () => {
   });
   // Handle login (T/F) depending on user's status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Store user data upon login & signout
+  const [userData, setUserData] = useState();
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -79,7 +81,6 @@ const App = () => {
       .catch(console.error);
   }
 
-  // TO-DO: Finish both functions logic below...
   function handleRegisterUser(inputValues) {
     // 1. Get values from 'RegisterModal' form upon submission.
     // Check if email and password are provided.
@@ -95,13 +96,34 @@ const App = () => {
     // 2. Close modal
     closeAllModals();
     // 3. Reset form.
-    // inputValues.reset(); // Not a function to reset form inputs
+
     // 4. Sign user in via inputted credentials.
     // Navigate user to '/profile'
   }
 
   function handleLoginUser(inputValues) {
     // 1. Get values from 'LoginModal' form upon submission.
+    if (!inputValues.email || !inputValues.password) {
+      return;
+    }
+    auth
+      .signin(inputValues)
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          auth
+            .getCurrentUser()
+            .then((data) => {
+              setUserData(data);
+              setIsLoggedIn(true);
+            })
+            .catch(console.error);
+
+          // navigate("/profile");
+        }
+      })
+      .catch(console.error);
     // 2. Close modal
     // 3. Reset Form.
     // 4. Log user in and redirect to profile page.

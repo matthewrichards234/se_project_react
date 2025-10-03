@@ -22,4 +22,19 @@ function signin({ email, password }) {
   });
 }
 
-export default { signup, signin };
+function getCurrentUser() {
+  // make fetch req
+  // on headers pass in authorization header = "Bearer " + token stored on local storage
+  const token = localStorage.getItem("token");
+  return fetch(`${baseUrl}users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return handleServerResponse(res);
+  });
+}
+
+export default { signup, signin, getCurrentUser };

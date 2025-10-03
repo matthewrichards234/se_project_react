@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
 const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
-  const { values, handleChange } = useForm({
+  const { values, handleChange, resetForm } = useForm({
     email: "",
     password: "",
     name: "",
@@ -12,6 +12,7 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleOnSubmit(values);
+    resetForm(); // reset after submit
   };
 
   return (
