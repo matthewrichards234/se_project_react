@@ -85,17 +85,19 @@ const App = () => {
     // Check if email and password are provided.
     if (inputValues.email && inputValues.password) {
       auth
-        .signup(...inputValues) // NOTE: Make sure destructuring here is used properly.
+        .signup(inputValues) // NOTE: Make sure destructuring here is used properly.
         .then(() => {
           // Handle successful registration.
+          handleLoginUser(inputValues);
         })
         .catch(console.error);
     }
     // 2. Close modal
     closeAllModals();
     // 3. Reset form.
-    inputValues.reset();
+    // inputValues.reset(); // Not a function to reset form inputs
     // 4. Sign user in via inputted credentials.
+    // Navigate user to '/profile'
   }
 
   function handleLoginUser(inputValues) {

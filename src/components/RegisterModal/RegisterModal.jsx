@@ -6,7 +6,7 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
     email: "",
     password: "",
     name: "",
-    avatarUrl: "",
+    avatar: "",
   });
 
   const handleSubmit = (e) => {
@@ -55,7 +55,7 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
       </label>
       <input
         type="text"
-        id="name"
+        id="register-name"
         name="name"
         className="modal__input"
         placeholder="Name"
@@ -69,14 +69,14 @@ const RegisterModal = ({ isOpen, onClose, handleOnSubmit }) => {
       </label>
       <input
         type="url"
-        id="avatarUrl"
-        name="avatarUrl"
+        id="register-avatarUrl"
+        name="avatar"
         className="modal__input"
         placeholder="Avatar URL"
         required
         minLength={2}
         onChange={handleChange}
-        value={values.avatarUrl}
+        value={values.avatar}
       />
     </ModalWithForm>
   );
