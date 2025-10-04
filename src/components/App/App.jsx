@@ -11,7 +11,7 @@ import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { addItem, deleteItem, getItems } from "../../utils/api";
 import auth from "../../utils/auth";
@@ -32,6 +32,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Store user data upon login & signout
   const [userData, setUserData] = useState();
+  // To navigate user to 'profile' upon login
+  const navigate = useNavigate();
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -95,9 +97,7 @@ const App = () => {
     }
     // 2. Close modal
     closeAllModals();
-    // 3. Reset form.
-
-    // 4. Sign user in via inputted credentials.
+    // 3. Sign user in via inputted credentials.
     // Navigate user to '/profile'
   }
 
@@ -117,16 +117,15 @@ const App = () => {
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
+              // 3. Log user in and redirect to profile page.
+              navigate("/profile");
             })
             .catch(console.error);
-
-          // navigate("/profile");
         }
       })
       .catch(console.error);
     // 2. Close modal
-    // 3. Reset Form.
-    // 4. Log user in and redirect to profile page.
+    closeAllModals();
   }
 
   function handleSignInRequest() {

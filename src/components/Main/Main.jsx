@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCards from "../ItemCards/ItemCards";
@@ -11,7 +10,7 @@ const Main = ({ handleOpenPreviewModal, clothingItems, isLoggedIn }) => {
 
       {isLoggedIn ? (
         <>
-          // True
+          {/* // True */}
           <ItemCards
             handleOpenModal={handleOpenPreviewModal}
             clothingItems={clothingItems}
@@ -19,7 +18,7 @@ const Main = ({ handleOpenPreviewModal, clothingItems, isLoggedIn }) => {
         </>
       ) : (
         <>
-          // False
+          {/* // False */}
           <ItemCards
             handleOpenModal={handleOpenPreviewModal}
             clothingItems={defaultClothingItems.filter((item) => {
