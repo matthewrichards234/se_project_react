@@ -195,17 +195,6 @@ const App = () => {
           handleOpenSignupModal={handleOpenSignupModal}
         />
         <Routes>
-          {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
-          <Route
-            path="*"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/profile" replace />
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
-          ></Route>
           <Route
             path="/"
             element={
@@ -227,6 +216,18 @@ const App = () => {
                   clothingItems={clothingItems}
                 />
               </ProtectedRoute>
+            }
+          ></Route>
+          {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
+          {/* Catch-all should go LAST */}
+          <Route
+            path="*"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/profile" replace />
+              ) : (
+                <Navigate to="/login" replace />
+              )
             }
           ></Route>
         </Routes>

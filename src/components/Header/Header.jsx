@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Header.css";
 import Logo from "../../assets/Images/wtwr-logo.svg";
 import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.

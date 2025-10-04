@@ -8,25 +8,14 @@ const Main = ({ handleOpenPreviewModal, clothingItems, isLoggedIn }) => {
     <div>
       <WeatherCard />
 
-      {isLoggedIn ? (
-        <>
-          {/* // True */}
-          <ItemCards
-            handleOpenModal={handleOpenPreviewModal}
-            clothingItems={clothingItems}
-          />
-        </>
-      ) : (
-        <>
-          {/* // False */}
-          <ItemCards
-            handleOpenModal={handleOpenPreviewModal}
-            clothingItems={defaultClothingItems.filter((item) => {
-              return item.weather === "warm";
-            })}
-          />
-        </>
-      )}
+      <ItemCards
+        handleOpenModal={handleOpenPreviewModal}
+        clothingItems={
+          isLoggedIn
+            ? clothingItems
+            : defaultClothingItems.filter((item) => item.weather === "warm")
+        }
+      />
     </div>
   );
 };
