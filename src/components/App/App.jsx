@@ -113,7 +113,7 @@ const App = () => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           auth
-            .getCurrentUser()
+            .getCurrentUser(data.token)
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
@@ -175,6 +175,24 @@ const App = () => {
     getItems()
       .then((items) => {
         setClothingItems(items.data.reverse());
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("token");
+
+    if (!jwt) {
+      return;
+    }
+
+    auth
+      .getCurrentUser(jwt)
+      .then((data) => {
+        setUserData(data);
+        setIsLoggedIn(true);
+        // Log user in and redirect to profile page.
+        navigate("/profile");
       })
       .catch(console.error);
   }, []);

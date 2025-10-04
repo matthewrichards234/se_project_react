@@ -22,10 +22,9 @@ function signin({ email, password }) {
   });
 }
 
-function getCurrentUser() {
-  // make fetch req
+function getCurrentUser(token) {
   // on headers pass in authorization header = "Bearer " + token stored on local storage
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   return fetch(`${baseUrl}users/me`, {
     method: "GET",
     headers: {
