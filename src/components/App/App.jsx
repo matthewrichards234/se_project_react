@@ -213,6 +213,7 @@ const App = () => {
               <Main
                 handleOpenPreviewModal={handleOpenPreviewModal}
                 clothingItems={clothingItems}
+                isLoggedIn={isLoggedIn}
               />
             }
           ></Route>
