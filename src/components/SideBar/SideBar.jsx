@@ -1,7 +1,11 @@
 import "./SideBar.css";
 import PFP from "../../assets/Images/user-pfp.svg";
 
-const SideBar = () => {
+const SideBar = ({
+  handleOpenModal,
+  handleOpenLogoutModal,
+  handleOpenEditProfileModal,
+}) => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">

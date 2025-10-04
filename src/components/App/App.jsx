@@ -97,12 +97,12 @@ const App = () => {
     }
     // 2. Close modal
     closeAllModals();
-    // 3. Sign user in via inputted credentials.
     // Navigate user to '/profile'
+    navigate("/profile");
   }
 
   function handleLoginUser(inputValues) {
-    // 1. Get values from 'LoginModal' form upon submission.
+    // Get values from 'LoginModal' form upon submission.
     if (!inputValues.email || !inputValues.password) {
       return;
     }
@@ -117,14 +117,14 @@ const App = () => {
             .then((data) => {
               setUserData(data);
               setIsLoggedIn(true);
-              // 3. Log user in and redirect to profile page.
+              // Log user in and redirect to profile page.
               navigate("/profile");
             })
             .catch(console.error);
         }
       })
       .catch(console.error);
-    // 2. Close modal
+    // Close modal
     closeAllModals();
   }
 
