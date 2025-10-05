@@ -1,4 +1,5 @@
 import "./ItemCard.css";
+import heartIcon from "../../assets/Images/like-button.svg";
 
 const ItemCard = ({ item, handleOpenModal }) => {
   function handlePreviewClick() {
@@ -6,10 +7,19 @@ const ItemCard = ({ item, handleOpenModal }) => {
   }
 
   return (
-    <li className="item-cards__content">
+    <li className="item-card__content">
       <div className="item-card" onClick={handlePreviewClick}>
-        <p className="item-card__name">{item.name}</p>
-        <img src={item.link} alt="" className="item-card__img" />
+        <div className="item-card__header">
+          <p className="item-card__name">{item.name}</p>
+          <button type="button" className="item-card__like-btn">
+            <img
+              src={heartIcon}
+              alt={heartIcon}
+              className="item-card__heart-icon"
+            />
+          </button>
+        </div>
+        <img src={item.link} alt={item.name} className="item-card__img" />
       </div>
     </li>
   );
