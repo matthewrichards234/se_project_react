@@ -215,6 +215,7 @@ const App = () => {
           handleOpenModal={handleOpenClothingModal}
           handleOpenLoginModal={handleOpenLoginModal}
           handleOpenSignupModal={handleOpenSignupModal}
+          isLoggedIn={isLoggedIn}
         />
         <Routes>
           <Route

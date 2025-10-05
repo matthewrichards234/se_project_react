@@ -9,7 +9,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // 1. Define handleChange / handleSubmit.
 // 2. Write logic to connect onSubmit to backup and update DB / display to DOM.
 // 3. Test to see if save user info upon logout.
-const EditProfileModal = ({ isOpen, onClose, handleSubmit }) => {
+const EditProfileModal = ({ isOpen, onClose, handleOnSubmit }) => {
   const { values, handleChange } = useForm({
     name: "",
     avatar: "",
