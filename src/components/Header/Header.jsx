@@ -44,7 +44,7 @@ const Header = ({
         <>
           <button
             type="button"
-            className="header__login-btn"
+            className="header__signin-btn"
             onClick={handleOpenSignupModal}
           >
             Sign Up
@@ -54,7 +54,7 @@ const Header = ({
             className="header__login-btn"
             onClick={handleOpenLoginModal}
           >
-            Login In
+            Log In
           </button>
         </>
       )}
