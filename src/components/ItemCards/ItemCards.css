@@ -8,7 +8,8 @@
 
 .item-cards__ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 323px);
+  /* grid-template-columns: repeat(auto-fill, 323px); */
+  grid-template-columns: repeat(4, 1fr);
   gap: 21px;
   padding: 0;
   list-style: none;
