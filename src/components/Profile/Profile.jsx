@@ -6,10 +6,11 @@ const Profile = ({
   handleOpenClothingModal,
   handleOpenPreviewModal,
   clothingItems,
+  handleOpenEditProfileModal,
 }) => {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar handleOpenEditProfileModal={handleOpenEditProfileModal} />
       <ClothesSection
         handleOpenClothingModal={handleOpenClothingModal}
         handleOpenPreviewModal={handleOpenPreviewModal}

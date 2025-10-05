@@ -52,6 +52,10 @@ const App = () => {
     setActiveModal("signup");
   }
 
+  function handleOpenEditProfileModal() {
+    setActiveModal("edit-profile");
+  }
+
   function closeAllModals() {
     setActiveModal("");
   }
@@ -232,6 +236,7 @@ const App = () => {
                   handleOpenClothingModal={handleOpenClothingModal}
                   handleOpenPreviewModal={handleOpenPreviewModal}
                   clothingItems={clothingItems}
+                  handleOpenEditProfileModal={handleOpenEditProfileModal}
                 />
               </ProtectedRoute>
             }
