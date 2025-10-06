@@ -9,22 +9,68 @@ function getItems() {
 }
 
 function addItem({ name, imageUrl, weather }) {
+  const token = localStorage.getItem("token");
   return fetch(`${baseUrl}items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleServerResponse);
 }
 
 function deleteItem(id) {
-  return fetch(`${baseUrl}items/${id}`, {
+  const token = localStorage.getItem("token");
+  return fetch(`${baseUrl}items/:${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 }
 
-export { baseUrl, handleServerResponse, getItems, addItem, deleteItem };
+function updateItem(id) {
+  const token = localStorage.getItem("token");
+  return fetch(`${baseUrl}items/:${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+}
+
+function likeItem(id) {
+  const token = localStorage.getItem("token");
+  return fetch(`${baseUrl}items/:${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+}
+
+function dislikeItem(id) {
+  const token = localStorage.getItem("token");
+  return fetch(`${baseUrl}items/:${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+}
+
+export {
+  baseUrl,
+  handleServerResponse,
+  getItems,
+  addItem,
+  deleteItem,
+  updateItem,
+  likeItem,
+  dislikeItem,
+};

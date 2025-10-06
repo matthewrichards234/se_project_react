@@ -9,6 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
@@ -132,6 +133,14 @@ const App = () => {
     closeAllModals();
   }
 
+  // Removes token from local storage, sends them to home page, and sets isLoggedIn to 'false'.
+  function logout() {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setUserData();
+    navigate("/");
+  }
+
   function handleSignInRequest() {
     // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage
   }
@@ -238,6 +247,7 @@ const App = () => {
                   handleOpenPreviewModal={handleOpenPreviewModal}
                   clothingItems={clothingItems}
                   handleOpenEditProfileModal={handleOpenEditProfileModal}
+                  handleLogout={logout}
                 />
               </ProtectedRoute>
             }
@@ -276,6 +286,11 @@ const App = () => {
           isOpen={activeModal === "signup"}
           onClose={closeAllModals}
           handleOnSubmit={handleRegisterUser}
+        />
+        <EditProfileModal
+          isOpen={activeModal === "edit-profile"}
+          onClose={closeAllModals}
+          // TO-DO: Add functionality
         />
       </CurrentUnitTemperatureContext.Provider>
     </div>

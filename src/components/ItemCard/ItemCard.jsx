@@ -19,7 +19,7 @@ const ItemCard = ({ item, handleOpenModal }) => {
             />
           </button>
         </div>
-        <img src={item.link} alt={item.name} className="item-card__img" />
+        <img src={item.imageUrl} alt={item.name} className="item-card__img" />
       </div>
     </li>
   );

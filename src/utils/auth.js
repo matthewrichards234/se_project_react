@@ -36,4 +36,15 @@ function getCurrentUser(token) {
   });
 }
 
-export default { signup, signin, getCurrentUser };
+function updateProfile({ name, avatar }) {
+  return fetch(`${baseUrl}users/me`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) => handleServerResponse(res));
+}
+
+export default { signup, signin, getCurrentUser, updateProfile };

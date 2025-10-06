@@ -1,18 +1,7 @@
 import "./SideBar.css";
 import PFP from "../../assets/Images/user-pfp.svg";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
-import { NavLink, useNavigate } from "react-router-dom";
 
-const SideBar = ({ handleOpenEditProfileModal, setIsLoggedIn }) => {
-  // Navigate user to home page upon logout.
-  const navigate = useNavigate();
-
-  // Removes token from local storage, sends them to home page, and sets isLoggedIn to 'false'.
-  function logout() {
-    localStorage.removeItem("token");
-    navigate("/");
-    setIsLoggedIn(false);
-  }
+const SideBar = ({ handleOpenEditProfileModal, handleLogout }) => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
@@ -23,11 +12,15 @@ const SideBar = ({ handleOpenEditProfileModal, setIsLoggedIn }) => {
         <button
           type="button"
           className="sidebar__edit-profile-btn"
-          onClick={EditProfileModal}
+          onClick={handleOpenEditProfileModal}
         >
           Change profile data
         </button>
-        <button type="button" className="sidebar__logout-btn" onClick={logout}>
+        <button
+          type="button"
+          className="sidebar__logout-btn"
+          onClick={handleLogout}
+        >
           Log Out
         </button>
       </div>
