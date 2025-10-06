@@ -4,7 +4,7 @@ import { weatherCardConditions } from "../../utils/weatherConditions";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const WeatherCard = () => {
-  const { temperature, currentTemperatureUnit, weatherData } = useContext(
+  const { temperature, currentTemperatureUnit } = useContext(
     CurrentUnitTemperatureContext
   );
   const weatherImage = weatherCardConditions["Default"]["morning"]; // weatherCardConditions[weatherData.condition]

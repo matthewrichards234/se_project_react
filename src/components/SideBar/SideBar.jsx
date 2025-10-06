@@ -1,12 +1,14 @@
 import "./SideBar.css";
-import PFP from "../../assets/Images/user-pfp.svg";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const SideBar = ({ handleOpenEditProfileModal, handleLogout }) => {
+  const { name, avatar } = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <img src={PFP} alt="PFP" className="sidebar__pfp" />
-        <p className="sidebar__username">Terrence Tegegne</p>
+        <img src={avatar} alt="PFP" className="sidebar__pfp" />
+        <p className="sidebar__username">{name}</p>
       </div>
       <div className="sidebar__buttons">
         <button

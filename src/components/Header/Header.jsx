@@ -1,8 +1,9 @@
 import "./Header.css";
 import Logo from "../../assets/Images/wtwr-logo.svg";
-import PFP from "../../assets/Images/user-pfp.svg"; // Hard coded pfp.
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({
   handleOpenModal,
@@ -15,6 +16,8 @@ const Header = ({
     month: "long",
     day: "numeric",
   };
+
+  const { name, avatar } = useContext(CurrentUserContext);
 
   return (
     <div className="header">
@@ -35,9 +38,13 @@ const Header = ({
           >
             + Add clothes
           </button>
-          <p className="header__user-name">Terrence Tegegne</p>
+          <p className="header__user-name">{name}</p>
           <NavLink to="/profile">
-            <img src={PFP} alt="Profile Picture" className="header__user-pfp" />
+            <img
+              src={avatar}
+              alt="Profile Picture"
+              className="header__user-pfp"
+            />
           </NavLink>
         </>
       ) : (

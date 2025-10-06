@@ -12,10 +12,12 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import { addItem, deleteItem, getItems } from "../../utils/api";
 import auth from "../../utils/auth";
+import PFP from "../../assets/Images/user-pfp.svg";
 
 const App = () => {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -32,9 +34,15 @@ const App = () => {
   // Handle login (T/F) depending on user's status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Store user data upon login & signout
-  const [userData, setUserData] = useState();
+  // NOTE: set userData to a default value so page can reload during testing.
+  const [userData, setUserData] = useState({
+    name: "Matthew",
+    avatar: PFP,
+  });
   // To navigate user to 'profile' upon login
   const navigate = useNavigate();
+
+  console.log(userData);
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -220,78 +228,86 @@ const App = () => {
           weatherData,
         }}
       >
-        <Header
-          handleOpenModal={handleOpenClothingModal}
-          handleOpenLoginModal={handleOpenLoginModal}
-          handleOpenSignupModal={handleOpenSignupModal}
-          isLoggedIn={isLoggedIn}
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                handleOpenPreviewModal={handleOpenPreviewModal}
-                clothingItems={clothingItems}
-                isLoggedIn={isLoggedIn}
-              />
-            }
-          ></Route>
-          <Route
-            path="/profile"
-            element={
-              // Protect the /profile route by wrapping it in a component that redirects unauthorized users to the main page
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Profile
-                  handleOpenClothingModal={handleOpenClothingModal}
+        {/* Add values for context and add js to them. */}
+        <CurrentUserContext.Provider
+          value={{
+            name: userData.name,
+            avatar: userData.avatar,
+          }}
+        >
+          <Header
+            handleOpenModal={handleOpenClothingModal}
+            handleOpenLoginModal={handleOpenLoginModal}
+            handleOpenSignupModal={handleOpenSignupModal}
+            isLoggedIn={isLoggedIn}
+          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
                   handleOpenPreviewModal={handleOpenPreviewModal}
                   clothingItems={clothingItems}
-                  handleOpenEditProfileModal={handleOpenEditProfileModal}
-                  handleLogout={logout}
+                  isLoggedIn={isLoggedIn}
                 />
-              </ProtectedRoute>
-            }
-          ></Route>
-          {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
-          {/* Catch-all should go LAST */}
-          <Route
-            path="*"
-            element={
-              isLoggedIn ? (
-                <Navigate to="/profile" replace />
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
-          ></Route>
-        </Routes>
-        <Footer />
-        <AddItemModal
-          isOpen={activeModal === "add-clothes"}
-          onClose={closeAllModals}
-          handleOnSubmit={handleAddItemSubmit}
-        />
-        <ItemModal
-          isOpen={activeModal === "preview"}
-          onClose={closeAllModals}
-          item={selectedItem}
-          handleDeleteItem={handleDeleteItem}
-        />
-        <LoginModal
-          isOpen={activeModal === "login"}
-          onClose={closeAllModals}
-          handleOnSubmit={handleLoginUser}
-        />
-        <RegisterModal
-          isOpen={activeModal === "signup"}
-          onClose={closeAllModals}
-          handleOnSubmit={handleRegisterUser}
-        />
-        <EditProfileModal
-          isOpen={activeModal === "edit-profile"}
-          onClose={closeAllModals}
-          // TO-DO: Add functionality
-        />
+              }
+            ></Route>
+            <Route
+              path="/profile"
+              element={
+                // Protect the /profile route by wrapping it in a component that redirects unauthorized users to the main page
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    handleOpenClothingModal={handleOpenClothingModal}
+                    handleOpenPreviewModal={handleOpenPreviewModal}
+                    clothingItems={clothingItems}
+                    handleOpenEditProfileModal={handleOpenEditProfileModal}
+                    handleLogout={logout}
+                  />
+                </ProtectedRoute>
+              }
+            ></Route>
+            {/* Catch-all route: redirect logged-in users to /profile, otherwise to /login */}
+            {/* Catch-all should go LAST */}
+            <Route
+              path="*"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/profile" replace />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            ></Route>
+          </Routes>
+          <Footer />
+          <AddItemModal
+            isOpen={activeModal === "add-clothes"}
+            onClose={closeAllModals}
+            handleOnSubmit={handleAddItemSubmit}
+          />
+          <ItemModal
+            isOpen={activeModal === "preview"}
+            onClose={closeAllModals}
+            item={selectedItem}
+            handleDeleteItem={handleDeleteItem}
+          />
+          <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={closeAllModals}
+            handleOnSubmit={handleLoginUser}
+          />
+          <RegisterModal
+            isOpen={activeModal === "signup"}
+            onClose={closeAllModals}
+            handleOnSubmit={handleRegisterUser}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeAllModals}
+            // TO-DO: Add functionality
+          />
+        </CurrentUserContext.Provider>
       </CurrentUnitTemperatureContext.Provider>
     </div>
   );

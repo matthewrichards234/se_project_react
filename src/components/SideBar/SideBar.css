@@ -30,3 +30,14 @@
   margin-right: auto;
   padding: 0 0 0 40px;
 }
+
+.sidebar__pfp {
+  width: 40px;
+  height: 40px;
+  margin: auto 0 auto 0;
+  border-radius: 50%;
+}
+
+.sidebar__username {
+  margin: auto 12px auto 0;
+}
