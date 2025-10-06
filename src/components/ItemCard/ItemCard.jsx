@@ -12,7 +12,7 @@ const ItemCard = ({ item, handleOpenModal, handleLikeClick }) => {
 
   let isLiked = item.likes.find((id) => id === currentUser?._id);
   function handleLike() {
-    return !isLiked;
+    handleLikeClick(item._id, isLiked);
   }
 
   // console.log(item);

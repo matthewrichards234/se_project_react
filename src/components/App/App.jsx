@@ -158,11 +158,19 @@ const App = () => {
     navigate("/");
   }
 
-  function toggleLikedItem() {
-    toggleItemLike
-      .then((item) => {
-        console.log(item);
-        // setClothingItems(item.likes);
+  function toggleLikedItem(id, isLiked) {
+    toggleItemLike(id, isLiked)
+      .then((data) => {
+        console.log(data);
+        setClothingItems(
+          clothingItems.map((item) => {
+            if (item._id === id) {
+              return data.data;
+            } else {
+              return item;
+            }
+          })
+        );
       })
       .catch(console.error);
   }
