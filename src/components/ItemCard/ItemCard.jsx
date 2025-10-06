@@ -8,7 +8,7 @@ const ItemCard = ({ item, handleOpenModal }) => {
 
   return (
     <li className="item-card__content">
-      <div className="item-card" onClick={handlePreviewClick}>
+      <div className="item-card">
         <div className="item-card__header">
           <p className="item-card__name">{item.name}</p>
           <button type="button" className="item-card__like-btn">
@@ -19,7 +19,12 @@ const ItemCard = ({ item, handleOpenModal }) => {
             />
           </button>
         </div>
-        <img src={item.imageUrl} alt={item.name} className="item-card__img" />
+        <img
+          src={item.imageUrl}
+          alt={item.name}
+          className="item-card__img"
+          onClick={handlePreviewClick}
+        />
       </div>
     </li>
   );

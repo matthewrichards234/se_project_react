@@ -1,6 +1,4 @@
-import React from "react";
 import "./ItemModal.css";
-import ItemCard from "../ItemCard/ItemCard";
 
 const ItemModal = ({ isOpen, onClose, item, handleDeleteItem }) => {
   function handleDelete() {
