@@ -158,7 +158,14 @@ const App = () => {
     navigate("/");
   }
 
-  function toggleLikedItem() {}
+  function toggleLikedItem() {
+    toggleItemLike
+      .then((item) => {
+        console.log(item);
+        // setClothingItems(item.likes);
+      })
+      .catch(console.error);
+  }
 
   function handleSignInRequest() {
     // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage
@@ -255,6 +262,7 @@ const App = () => {
                   handleOpenPreviewModal={handleOpenPreviewModal}
                   clothingItems={clothingItems}
                   isLoggedIn={isLoggedIn}
+                  handleLikeClick={toggleLikedItem}
                 />
               }
             ></Route>
@@ -269,6 +277,7 @@ const App = () => {
                     clothingItems={clothingItems}
                     handleOpenEditProfileModal={handleOpenEditProfileModal}
                     handleLogout={logout}
+                    handleLikeClick={toggleLikedItem}
                   />
                 </ProtectedRoute>
               }

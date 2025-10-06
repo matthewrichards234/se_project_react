@@ -8,6 +8,7 @@ const Profile = ({
   clothingItems,
   handleOpenEditProfileModal,
   handleLogout,
+  handleLikeClick,
 }) => {
   return (
     <div className="profile">
@@ -19,6 +20,7 @@ const Profile = ({
         handleOpenClothingModal={handleOpenClothingModal}
         handleOpenPreviewModal={handleOpenPreviewModal}
         clothingItems={clothingItems}
+        handleLikeClick={handleLikeClick}
       />
     </div>
   );

@@ -15,7 +15,7 @@ const ItemCard = ({ item, handleOpenModal, handleLikeClick }) => {
     return !isLiked;
   }
 
-  console.log(item);
+  // console.log(item);
 
   return (
     <li className="item-card__content">

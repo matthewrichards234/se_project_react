@@ -7,6 +7,7 @@ const ClothesSection = ({
   handleOpenClothingModal,
   handleOpenPreviewModal,
   clothingItems,
+  handleLikeClick,
 }) => {
   return (
     <div className="clothes-section">
@@ -24,6 +25,7 @@ const ClothesSection = ({
       <ItemCards
         handleOpenModal={handleOpenPreviewModal}
         clothingItems={clothingItems}
+        handleLikeClick={handleLikeClick}
       />
       <AddItemModal />
     </div>
