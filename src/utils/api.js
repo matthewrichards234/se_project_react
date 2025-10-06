@@ -22,7 +22,7 @@ function addItem({ name, imageUrl, weather }) {
 
 function deleteItem(id) {
   const token = localStorage.getItem("token");
-  return fetch(`${baseUrl}items/:${id}`, {
+  return fetch(`${baseUrl}items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ function deleteItem(id) {
 
 function updateItem(id) {
   const token = localStorage.getItem("token");
-  return fetch(`${baseUrl}items/:${id}`, {
+  return fetch(`${baseUrl}items/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function updateItem(id) {
 
 function likeItem(id) {
   const token = localStorage.getItem("token");
-  return fetch(`${baseUrl}items/:${id}/likes`, {
+  return fetch(`${baseUrl}items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function likeItem(id) {
 
 function dislikeItem(id) {
   const token = localStorage.getItem("token");
-  return fetch(`${baseUrl}items/:${id}/likes`, {
+  return fetch(`${baseUrl}items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

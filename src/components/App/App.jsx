@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -14,13 +14,12 @@ import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import { addItem, deleteItem, getItems } from "../../utils/api";
 import auth from "../../utils/auth";
 import PFP from "../../assets/Images/user-pfp.svg";
 
 const App = () => {
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState();
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -84,6 +83,7 @@ const App = () => {
       .catch(console.error);
   }
 
+  // Currently getting 400 Error
   function handleDeleteItem(itemToDelete) {
     deleteItem(itemToDelete._id)
       .then(() => {
@@ -94,6 +94,17 @@ const App = () => {
         closeAllModals();
       })
       .catch(console.error);
+  }
+
+  function handleUpdateProfile(values) {
+    auth
+      .updateProfile({ name: values.name, avatar: values.avatar })
+      .then((updatedInfo) => {
+        setUserData(updatedInfo);
+      })
+      .catch(console.error);
+
+    closeAllModals();
   }
 
   function handleRegisterUser(inputValues) {
@@ -108,7 +119,6 @@ const App = () => {
         })
         .catch(console.error);
     }
-    // 2. Close modal
     closeAllModals();
     // Navigate user to '/profile'
     navigate("/profile");
@@ -306,7 +316,7 @@ const App = () => {
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeAllModals}
-            // TO-DO: Add functionality
+            handleOnSubmit={handleUpdateProfile}
           />
         </CurrentUserContext.Provider>
       </CurrentUnitTemperatureContext.Provider>

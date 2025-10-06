@@ -35,7 +35,8 @@ const EditProfileModal = ({ isOpen, onClose, handleOnSubmit }) => {
           type="text"
           className="modal__input"
           id="edit-name"
-          placeholder="name"
+          name="name"
+          placeholder="Name"
           onChange={handleChange}
           value={values.name}
           required
@@ -46,10 +47,11 @@ const EditProfileModal = ({ isOpen, onClose, handleOnSubmit }) => {
         <input
           type="text"
           className="modal__input"
-          id="edit-name"
-          placeholder="name"
+          id="edit-avatar"
+          name="avatar"
+          placeholder="Avatar URL"
           onChange={handleChange}
-          value={values.name}
+          value={values.avatar}
           required
         />
       </ModalWithForm>

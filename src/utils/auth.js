@@ -37,8 +37,9 @@ function getCurrentUser(token) {
 }
 
 function updateProfile({ name, avatar }) {
+  const token = localStorage.getItem("token");
   return fetch(`${baseUrl}users/me`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
