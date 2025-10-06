@@ -19,7 +19,7 @@ import auth from "../../utils/auth";
 import PFP from "../../assets/Images/user-pfp.svg";
 
 const App = () => {
-  const [clothingItems, setClothingItems] = useState();
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -158,9 +158,7 @@ const App = () => {
     navigate("/");
   }
 
-  function likeClothingItem() {}
-
-  function dislikeClothingItem() {}
+  function toggleLikedItem() {}
 
   function handleSignInRequest() {
     // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage
@@ -242,12 +240,7 @@ const App = () => {
         }}
       >
         {/* Add values for context and add js to them. */}
-        <CurrentUserContext.Provider
-          value={{
-            name: userData.name,
-            avatar: userData.avatar,
-          }}
-        >
+        <CurrentUserContext.Provider value={userData}>
           <Header
             handleOpenModal={handleOpenClothingModal}
             handleOpenLoginModal={handleOpenLoginModal}
