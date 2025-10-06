@@ -14,7 +14,7 @@ import { weatherApi, getWeatherCondition } from "../../utils/weatherApi";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { addItem, deleteItem, getItems } from "../../utils/api";
+import { addItem, deleteItem, getItems, toggleItemLike } from "../../utils/api";
 import auth from "../../utils/auth";
 import PFP from "../../assets/Images/user-pfp.svg";
 
@@ -40,8 +40,6 @@ const App = () => {
   });
   // To navigate user to 'profile' upon login
   const navigate = useNavigate();
-
-  console.log(userData);
 
   function handleOpenClothingModal() {
     setActiveModal("add-clothes");
@@ -159,6 +157,10 @@ const App = () => {
     setUserData({ name: "", avatar: "" });
     navigate("/");
   }
+
+  function likeClothingItem() {}
+
+  function dislikeClothingItem() {}
 
   function handleSignInRequest() {
     // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage

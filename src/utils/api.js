@@ -42,21 +42,10 @@ function updateItem(id) {
   }).then(handleServerResponse);
 }
 
-function likeItem(id) {
+function toggleItemLike(id, isLiked) {
   const token = localStorage.getItem("token");
   return fetch(`${baseUrl}items/${id}/likes`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(handleServerResponse);
-}
-
-function dislikeItem(id) {
-  const token = localStorage.getItem("token");
-  return fetch(`${baseUrl}items/${id}/likes`, {
-    method: "DELETE",
+    method: isLiked ? "DELETE" : "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -71,6 +60,5 @@ export {
   addItem,
   deleteItem,
   updateItem,
-  likeItem,
-  dislikeItem,
+  toggleItemLike,
 };
