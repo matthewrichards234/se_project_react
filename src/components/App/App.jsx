@@ -145,7 +145,8 @@ const App = () => {
   function logout() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    setUserData();
+    // NOTE: Same as prev note line 37.
+    setUserData({ name: "", avatar: "" });
     navigate("/");
   }
 
