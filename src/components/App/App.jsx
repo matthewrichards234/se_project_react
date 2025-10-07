@@ -314,6 +314,7 @@ const App = () => {
             onClose={closeAllModals}
             item={selectedItem}
             handleDeleteItem={handleDeleteItem}
+            isLoggedIn={isLoggedIn}
           />
           <LoginModal
             isOpen={activeModal === "login"}

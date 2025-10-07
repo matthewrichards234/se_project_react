@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 
-const ItemModal = ({ isOpen, onClose, item, handleDeleteItem }) => {
+const ItemModal = ({ isOpen, onClose, item, handleDeleteItem, isLoggedIn }) => {
   function handleDelete() {
     handleDeleteItem(item);
   }
@@ -13,13 +13,16 @@ const ItemModal = ({ isOpen, onClose, item, handleDeleteItem }) => {
             <h2 className="modal__header">{item?.name}</h2>
             <p className="modal__weather-caption">Weather: {item?.weather}</p>
           </div>
-          <button
-            type="button"
-            className="modal__delete-btn"
-            onClick={handleDelete}
-          >
-            Delete item
-          </button>
+
+          {isLoggedIn ? (
+            <button
+              type="button"
+              className="modal__delete-btn"
+              onClick={handleDelete}
+            >
+              Delete item
+            </button>
+          ) : null}
         </div>
         <button
           type="button"
