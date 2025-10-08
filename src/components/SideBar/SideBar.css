@@ -1,12 +1,10 @@
 .sidebar {
-  height: 80vh;
 }
 
 .sidebar__container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 0 24px 40px;
   gap: 16px;
 }
 
@@ -27,7 +25,6 @@
   line-height: 24px;
   letter-spacing: 0;
   margin-right: auto;
-  padding: 0 0 0 40px;
 }
 
 .sidebar__pfp {

@@ -15,7 +15,3 @@
 .modal_is-opened {
   visibility: visible;
 }
-
-.modal__close-btn_gray {
-  background-image: url("se_project_wtwr/src/assets/Images/modal-close-gray.svg");
-}

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import ItemModal from "../ItemModal/ItemModal";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import AddItemModal from "../AddItemModal/AddItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import ItemModal from "../ItemModal/ItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";

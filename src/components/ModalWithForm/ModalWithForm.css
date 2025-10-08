@@ -89,3 +89,7 @@
   color: white;
   font-weight: 700;
 }
+
+.modal__close-btn_gray {
+  background-image: url("../../assets/Images/modal-close-gray.svg");
+}
