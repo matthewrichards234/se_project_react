@@ -1,4 +1,3 @@
-import React from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
@@ -22,6 +21,7 @@ const AddItemModal = ({ isOpen, onClose, handleOnSubmit }) => {
       onSubmit={handleSubmit}
       title="New garment"
       submitText="Add Garment"
+      closeBtnClass="modal__close-btn_gray"
     >
       <label htmlFor="name" className="modal__label">
         Name

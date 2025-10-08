@@ -6,6 +6,7 @@ const ModalWithForm = ({
   onSubmit,
   title,
   submitText,
+  closeBtnClass,
   children,
 }) => {
   return (
@@ -22,7 +23,7 @@ const ModalWithForm = ({
         <button
           type="button"
           aria-label="Close modal"
-          className="modal__close-btn"
+          className={`modal__close-btn ${closeBtnClass || ""}`}
           onClick={onClose}
         />
       </div>
