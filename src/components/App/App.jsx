@@ -133,19 +133,10 @@ const App = () => {
         console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
-          auth
-            .getCurrentUser(data.token)
-            .then((data) => {
-              setUserData(data);
-              setIsLoggedIn(true);
-              // Log user in and redirect to profile page.
-              navigate("/profile");
-            })
-            .catch(console.error);
+          getUserData();
         }
       })
       .catch(console.error);
-    // Close modal
     closeAllModals();
   }
 
@@ -177,6 +168,22 @@ const App = () => {
 
   function handleSignInRequest() {
     // If a log-in attempt is successful, check that the server gave access in its response and add it to localStorage
+  }
+
+  function getUserData() {
+    const jwt = localStorage.getItem("token");
+    if (!jwt) {
+      return;
+    }
+    auth
+      .getCurrentUser(jwt)
+      .then((data) => {
+        setUserData(data);
+        setIsLoggedIn(true);
+        // Log user in and redirect to profile page.
+        navigate("/profile");
+      })
+      .catch(console.error);
   }
 
   useEffect(() => {
@@ -228,20 +235,7 @@ const App = () => {
 
   useEffect(() => {
     const jwt = localStorage.getItem("token");
-
-    if (!jwt) {
-      return;
-    }
-
-    auth
-      .getCurrentUser(jwt)
-      .then((data) => {
-        setUserData(data);
-        setIsLoggedIn(true);
-        // Log user in and redirect to profile page.
-        navigate("/profile");
-      })
-      .catch(console.error);
+    getUserData();
   }, []);
 
   return (

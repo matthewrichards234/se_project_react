@@ -1,6 +1,13 @@
 import "./ItemModal.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 const ItemModal = ({ isOpen, onClose, item, handleDeleteItem, isLoggedIn }) => {
+  const { _id } = useContext(CurrentUserContext);
+
+  // console.log(_id);
+  // console.log(item);
+
   function handleDelete() {
     handleDeleteItem(item);
   }
@@ -14,7 +21,7 @@ const ItemModal = ({ isOpen, onClose, item, handleDeleteItem, isLoggedIn }) => {
             <p className="modal__weather-caption">Weather: {item?.weather}</p>
           </div>
 
-          {isLoggedIn ? (
+          {isLoggedIn && _id === item?.owner ? (
             <button
               type="button"
               className="modal__delete-btn"

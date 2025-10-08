@@ -9,18 +9,16 @@ const ItemCards = ({ handleOpenModal, clothingItems, handleLikeClick }) => {
   return (
     <div className="item-cards">
       <ul className="item-cards__ul">
-        {clothingItems
-          .filter((item) => item.weather.toLowerCase() === weatherData.clothing)
-          .map((item) => {
-            return (
-              <ItemCard
-                item={item}
-                key={item._id}
-                handleOpenModal={handleOpenModal}
-                handleLikeClick={handleLikeClick}
-              />
-            );
-          })}
+        {clothingItems.map((item) => {
+          return (
+            <ItemCard
+              item={item}
+              key={item._id}
+              handleOpenModal={handleOpenModal}
+              handleLikeClick={handleLikeClick}
+            />
+          );
+        })}
       </ul>
     </div>
   );

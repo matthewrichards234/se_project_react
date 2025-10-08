@@ -1,7 +1,8 @@
-import { useState } from "react";
 import "./ClothesSection.css";
 import ItemCards from "../ItemCards/ItemCards";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
   handleOpenClothingModal,
@@ -9,6 +10,7 @@ const ClothesSection = ({
   clothingItems,
   handleLikeClick,
 }) => {
+  const { _id } = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="clothes-section__container">
@@ -24,7 +26,9 @@ const ClothesSection = ({
       </div>
       <ItemCards
         handleOpenModal={handleOpenPreviewModal}
-        clothingItems={clothingItems}
+        clothingItems={clothingItems.filter((item) => {
+          return item.owner === _id;
+        })}
         handleLikeClick={handleLikeClick}
       />
       <AddItemModal />
