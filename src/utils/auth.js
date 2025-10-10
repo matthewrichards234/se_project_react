@@ -1,4 +1,5 @@
-import { baseUrl, handleServerResponse } from "./api";
+import { handleServerResponse } from "./api";
+import { baseUrl } from "./constants";
 
 function signup({ email, password, name, avatar }) {
   // BaseURL + register
