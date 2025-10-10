@@ -1,5 +1,6 @@
-/* .sidebar {
-} */
+.sidebar {
+  margin-left: 115px;
+}
 
 .sidebar__container {
   display: flex;
@@ -25,6 +26,10 @@
   line-height: 24px;
   letter-spacing: 0;
   margin-right: auto;
+}
+
+.sidebar__edit-profile-btn {
+  white-space: nowrap;
 }
 
 .sidebar__pfp {
