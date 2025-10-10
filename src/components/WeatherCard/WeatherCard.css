@@ -9,6 +9,7 @@
   max-width: 100%;
   height: 80px;
   border-radius: 12px;
+  background-image: url(../../assets/Images/cloudy-day.svg);
 
   /* For static website only bg-img & color */
   /* background-image: url(../../assets/Images/static-weather-sample.svg); */

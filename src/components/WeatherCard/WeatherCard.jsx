@@ -8,11 +8,12 @@ const WeatherCard = () => {
     CurrentUnitTemperatureContext
   );
   const weatherImage = weatherCardConditions["Default"]["morning"]; // weatherCardConditions[weatherData.condition]
+  console.log(weatherImage);
   return (
     <div className="weather-card">
       <div
         className="weather-card__container"
-        style={{ backgroundImage: `url(${weatherImage})` }}
+        // style={{ backgroundImage: `url(${weatherImage})` }}
       >
         <h1 className="weather-card__temperature">
           {temperature[currentTemperatureUnit]}°{currentTemperatureUnit}

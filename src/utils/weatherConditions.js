@@ -24,7 +24,7 @@ export const weatherCardConditions = {
     night: "src/assets/Images/cloudy-night.svg",
   },
   Default: {
-    morning: "src/assets/Images/cloudy-day.svg",
+    morning: "../assets/Images/cloudy-day.svg",
     night: "src/assets/Images/cloudy-night.svg",
   },
 };
