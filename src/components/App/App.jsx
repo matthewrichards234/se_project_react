@@ -14,7 +14,7 @@ import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperature
 import Main from "../Main/Main";
 import { weatherCardConditions } from "../../utils/weatherConditions";
 
-const App = ({ name, link }) => {
+const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
