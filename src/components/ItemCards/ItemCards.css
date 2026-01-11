@@ -1,13 +1,12 @@
 .item-cards {
-  width: 1360px;
-  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .item-cards__ul {
   display: grid;
-  max-width: 1360px;
-  grid-template-columns: repeat(auto-fill, minmax(323px, 1fr));
-  gap: 21px;
+  grid-template-columns: repeat(auto-fill, 323px);
+  gap: 20px;
   padding: 0;
   list-style: none;
 }

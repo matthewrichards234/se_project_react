@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 1360px;
-  padding: 0 40px;
+  max-width: 1360px;
+  width: 100%;
 }

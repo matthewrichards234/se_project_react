@@ -1,25 +1,24 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import "./ItemCards.css";
 import { CurrentUnitTemperatureContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const ItemCards = ({ handleOpenModal, clothingItems }) => {
+const ItemCards = ({ handleOpenModal, clothingItems, handleLikeClick }) => {
   const { weatherData } = useContext(CurrentUnitTemperatureContext);
+
   return (
     <div className="item-cards">
       <ul className="item-cards__ul">
-        {defaultClothingItems
-          .filter((item) => item.weather.toLowerCase() === weatherData.clothing)
-          .map((item) => {
-            return (
-              <ItemCard
-                item={item}
-                key={item._id}
-                handleOpenModal={handleOpenModal}
-              />
-            );
-          })}
+        {clothingItems.map((item) => {
+          return (
+            <ItemCard
+              item={item}
+              key={item._id}
+              handleOpenModal={handleOpenModal}
+              handleLikeClick={handleLikeClick}
+            />
+          );
+        })}
       </ul>
     </div>
   );

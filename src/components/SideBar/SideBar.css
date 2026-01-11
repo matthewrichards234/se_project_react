@@ -1,0 +1,44 @@
+.sidebar {
+  margin-right: 115px;
+}
+
+.sidebar__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.sidebar__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar__logout-btn,
+.sidebar__edit-profile-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin-right: auto;
+}
+
+.sidebar__edit-profile-btn {
+  white-space: nowrap;
+}
+
+.sidebar__pfp {
+  width: 40px;
+  height: 40px;
+  margin: auto 0 auto 0;
+  border-radius: 50%;
+}
+
+.sidebar__username {
+  margin: auto 12px auto 0;
+}
