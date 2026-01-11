@@ -18,7 +18,7 @@ import { addItem, deleteItem, getItems, toggleItemLike } from "../../utils/api";
 import auth from "../../utils/auth";
 import PFP from "../../assets/Images/user-pfp.svg";
 
-const App = ({ name, link }) => {
+const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
